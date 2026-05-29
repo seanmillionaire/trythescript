@@ -1,0 +1,317 @@
+<!-- =========================================================
+HM • OTO PAGE (1 COLUMN) • VIDEO-FIRST • WATCH-TIME BOOSTED
+✅ Includes your VTurb SmartPlayer embed (as provided)
+✅ Simple top offer block + timer + CTA + clean “No thanks”
+✅ Built to make people PRESS PLAY + STAY
+Paste into your OTO page as one block
+========================================================= -->
+
+<div id="hm-oto-page">
+  <style>
+    /* ========== Base + CF-safe cleanup ========== */
+    #hm-oto-page, #hm-oto-page *{ box-sizing:border-box; }
+    #hm-oto-page{
+      --ink:#0f172a;
+      --sub:#475569;
+      --muted:#64748b;
+      --line:#e5e7eb;
+      --soft:#f8fafc;
+      --green:#16a34a;
+      --greenbg:#ecfdf3;
+      --red:#dc2626;
+      --redbg:#fef2f2;
+      --amber:#f59e0b;
+      --amberbg:#fffbeb;
+      --ctaA:#ff8a00;
+      --ctaB:#ff3d00;
+      --shadow:0 26px 70px rgba(2,6,23,.14);
+
+      max-width:760px;
+      margin:0 auto;
+      padding:18px 14px 28px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--ink);
+      text-align:center;
+    }
+    /* Kill common bottom whitespace issues */
+    html, body{ margin:0 !important; padding:0 !important; height:auto !important; min-height:0 !important; overflow-x:hidden !important; }
+    #page,.page,.pageWrapper,.page-wrapper,.page-container,.page-content,.elPageContent,.elPageMainContent,.elPageBody,.elPageWrapper{
+      margin-bottom:0 !important; padding-bottom:0 !important; min-height:0 !important; height:auto !important;
+    }
+    div:empty{ display:none !important; }
+    body > *:last-child{ margin-bottom:0 !important; padding-bottom:0 !important; }
+
+    /* ========== Cards ========== */
+    .hm-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      box-shadow:0 12px 40px rgba(2,6,23,.06);
+      padding:16px;
+      text-align:left;
+    }
+    .hm-center{ text-align:center; }
+    .hm-top{
+      display:flex; flex-direction:column; gap:10px; align-items:center;
+      margin-bottom:14px;
+    }
+    .hm-pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border-radius:999px;
+      font-weight:900; font-size:13px; letter-spacing:.2px;
+      background:var(--greenbg); color:#065f46;
+      border:1px solid #bbf7d0;
+    }
+    .hm-head{
+      font-weight:900;
+      letter-spacing:-.02em;
+      line-height:1.08;
+      font-size:clamp(1.45rem,4.2vw,2.05rem);
+      margin:2px 0 0;
+      text-align:center;
+    }
+    .hm-sub{
+      margin:0;
+      font-weight:800;
+      color:var(--sub);
+      line-height:1.45;
+      text-align:center;
+    }
+    .hm-divider{ height:1px; background:var(--line); margin:14px 0; }
+
+    /* ========== Watch-time booster strip ========== */
+    .hm-watch{
+      background:var(--amberbg);
+      border:1px solid #fde68a;
+      color:#92400e;
+      border-radius:14px;
+      padding:12px 12px;
+      font-weight:900;
+      text-align:center;
+      line-height:1.35;
+    }
+    .hm-watch small{
+      display:block;
+      font-weight:800;
+      opacity:.9;
+      margin-top:6px;
+    }
+
+    /* ========== Video wrapper ========== */
+    .hm-video{
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#0b0b0f;
+      box-shadow:0 18px 50px rgba(2,6,23,.12);
+    }
+
+    /* ========== Bullets ========== */
+    .hm-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:grid;
+      gap:10px;
+    }
+    .hm-li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px 12px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+    }
+    .hm-check{
+      width:22px; height:22px; border-radius:8px;
+      display:inline-flex; align-items:center; justify-content:center;
+      background:#16a34a; color:#fff;
+      font-weight:900; font-size:14px;
+      flex:0 0 auto;
+      margin-top:1px;
+    }
+    .hm-li b{ display:block; font-weight:900; margin-bottom:2px; }
+    .hm-li span{ color:var(--sub); font-weight:800; line-height:1.35; }
+
+    /* ========== Timer + CTA ========== */
+    .hm-timerRow{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .hm-timerBox{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid #fecaca;
+      background:var(--redbg);
+      color:#7f1d1d;
+      font-weight:900;
+    }
+    .hm-time{
+      font-variant-numeric:tabular-nums;
+      letter-spacing:.6px;
+      font-size:16px;
+    }
+    .hm-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      width:100%;
+      padding:16px 14px;
+      border-radius:16px;
+      border:none;
+      cursor:pointer;
+      font-weight:900;
+      text-transform:none;
+      letter-spacing:.2px;
+      color:#fff;
+      background:linear-gradient(90deg,var(--ctaA),var(--ctaB));
+      box-shadow:0 18px 42px rgba(255,61,0,.28);
+      font-size:18px;
+      line-height:1.1;
+    }
+    .hm-btn:active{ transform:translateY(1px); }
+    .hm-note{
+      margin-top:8px;
+      color:var(--muted);
+      font-weight:800;
+      font-size:13px;
+      text-align:center;
+    }
+
+    .hm-nothanks{
+      display:block;
+      margin-top:14px;
+      text-align:center;
+      color:#6b7280;
+      font-weight:800;
+      font-size:14px;
+      line-height:1.4;
+      text-decoration:underline;
+      text-underline-offset:3px;
+      cursor:pointer;
+    }
+
+    /* ========== Mobile tighten ========== */
+    @media (max-width:640px){
+      #hm-oto-page{ padding-top:14px; }
+      .hm-card{ padding:14px; }
+      .hm-btn{ font-size:18px; padding:18px 14px; }
+      .hm-watch{ font-size:14px; }
+    }
+  </style>
+
+  <!-- ===================== -->
+  <!-- TOP CONFIRM + OFFER   -->
+  <!-- ===================== -->
+  <div class="hm-top">
+    <div class="hm-pill">✅ Order Confirmed! <span style="font-weight:800;opacity:.9;">Your access details will be sent to your inbox in 3–5 minutes</span></div>
+
+    <div class="hm-head">✨ Your Transformation Isn’t Complete Yet</div>
+    <p class="hm-sub">Unlock the Accelerator Below 👇</p>
+  </div>
+
+  <div class="hm-card">
+
+    <!-- WATCH-TIME BOOSTER -->
+    <div class="hm-watch">
+      Press play now.
+      <small>Give it 60 seconds. If you don’t feel a shift by then, skip it.</small>
+    </div>
+
+    <div class="hm-divider"></div>
+
+    <!-- VIDEO -->
+    <div class="hm-video" style="margin:0 0 14px;">
+      <vturb-smartplayer id="vid-6906c4687394fd46f1d5d797" style="display:block;margin:0 auto;width:100%;"></vturb-smartplayer>
+      <script type="text/javascript">
+        var s=document.createElement("script");
+        s.src="https://scripts.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/6906c4687394fd46f1d5d797/v4/player.js";
+        s.async=!0;
+        document.head.appendChild(s);
+      </script>
+    </div>
+
+    <!-- SIMPLE VALUE BULLETS -->
+    <ul class="hm-list">
+      <li class="hm-li">
+        <span class="hm-check">✓</span>
+        <div>
+          <b>✅ The 7-Minute Script Accelerator unlocks your shift</b>
+          <span>So the progress you just started actually sticks.</span>
+        </div>
+      </li>
+
+      <li class="hm-li">
+        <span class="hm-check">✓</span>
+        <div>
+          <b>🚀 The Accelerator amplifies your frequency 100× faster</b>
+          <span>It shortens the “time lag” between listening and seeing results.</span>
+        </div>
+      </li>
+
+      <li class="hm-li">
+        <span class="hm-check">✓</span>
+        <div>
+          <b>🧲 Includes Sean’s private “Receiving Field” track</b>
+          <span>Built to make “good things landing” feel normal again.</span>
+        </div>
+      </li>
+
+      <li class="hm-li">
+        <span class="hm-check">✓</span>
+        <div>
+          <b>💰 Lifetime access + one-time payment</b>
+          <span>Use it anytime you feel your momentum slipping.</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="hm-divider"></div>
+
+    <!-- TIMER + CTA (Button is part of the OTO offer block) -->
+    <div class="hm-center">
+      <div class="hm-timerRow">
+        <div class="hm-timerBox">
+          ⏳ Window closes in:
+          <span class="hm-time" id="hm-oto-timer">01:58</span>
+        </div>
+      </div>
+
+  </div>
+
+  <script>
+    /* =========================================================
+       SIMPLE COUNTDOWN (visual urgency)
+       - Starts at 1:58 by default
+       - If user refreshes, it will restart (simple on purpose)
+       If you want session-based persistence, tell me and I’ll add it.
+    ========================================================= */
+    (function(){
+      var el = document.getElementById('hm-oto-timer');
+      if(!el) return;
+
+      var total = (1 * 60) + 58; // 01:58
+      function tick(){
+        var m = Math.floor(total / 60);
+        var s = total % 60;
+        el.textContent =
+          String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+        if(total > 0){
+          total--;
+          setTimeout(tick, 1000);
+        }
+      }
+      tick();
+    })();
+  </script>
+</div>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Sean Ali - 7-Minute Manifestation Script | Clear The Hidden Block</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9fafb;
+            font-family: 'DM Sans', system-ui, sans-serif;
+            color: #1f2937;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Sora', system-ui, sans-serif;
+            font-weight: 800;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes vslPulse {
+            0%, 100% { box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(249, 115, 22, 0.4); }
+            50% { box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1), 0 0 0 12px rgba(249, 115, 22, 0); }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .quiz-wrapper, .vsl-wrapper {
+            transition: opacity 0.3s ease;
+        }
+
+        .vsl-wrapper {
+            display: none;
+        }
+
+        .quiz-card {
+            max-width: 680px;
+            margin: 32px auto 48px;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+            padding: 28px 28px 36px;
+            transition: padding 0.2s ease, margin 0.2s ease;
+        }
+
+        @media (max-width: 640px) {
+            .quiz-card {
+                margin: 16px 16px 32px;
+                padding: 20px 20px 28px;
+                border-radius: 32px;
+            }
+            .quiz-header h1 {
+                font-size: 26px;
+            }
+            .quiz-header p {
+                font-size: 16px;
+            }
+            .question-text {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+            .options-group {
+                gap: 10px;
+                margin-bottom: 24px;
+            }
+            .quiz-option {
+                padding: 14px 18px;
+                font-size: 15px;
+            }
+            .btn-primary, .btn-nav {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 24px;
+            transition: all 0.2s ease;
+        }
+
+        .quiz-header h1 {
+            font-size: 32px;
+            background: linear-gradient(135deg, #111827, #ea580c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .quiz-header p {
+            color: #4b5563;
+            font-size: 18px;
+        }
+
+        .quiz-header-hidden .quiz-header {
+            display: none;
+        }
+        
+        .quiz-card.quiz-header-hidden {
+            padding-top: 20px;
+        }
+        @media (max-width: 640px) {
+            .quiz-card.quiz-header-hidden {
+                padding-top: 16px;
+            }
+        }
+
+        .progress-area {
+            margin-bottom: 28px;
+        }
+
+        .progress-bar-bg {
+            background: #e5e7eb;
+            border-radius: 40px;
+            height: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #f97316, #ea580c);
+            width: 0%;
+            height: 100%;
+            border-radius: 40px;
+            transition: width 0.3s ease;
+        }
+
+        .step-counter {
+            font-size: 13px;
+            font-weight: 700;
+            color: #ea580c;
+            margin-bottom: 8px;
+            display: inline-block;
+            letter-spacing: 0.5px;
+        }
+
+        .question-text {
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+            margin-bottom: 28px;
+            line-height: 1.3;
+            color: #111827;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .quiz-option {
+            background: #f9fafb;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 16px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            user-select: none;
+        }
+
+        .quiz-option:hover {
+            background: #fff7ed;
+            border-color: #fdba74;
+        }
+
+        .quiz-option.selected {
+            background: #fff7ed;
+            border-color: #f97316;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.15);
+        }
+
+        .option-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #cbd5e1;
+            background: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quiz-option.selected .option-marker {
+            border-color: #f97316;
+            background: #f97316;
+            box-shadow: inset 0 0 0 3px white;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .btn-nav {
+            background: transparent;
+            border: 1px solid #d1d5db;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: #f97316;
+            border: none;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #ea580c;
+            transform: scale(0.98);
+        }
+
+        .btn-secondary:hover {
+            background: #f3f4f6;
+        }
+
+        .result-screen {
+            text-align: center;
+        }
+
+        .result-screen h2 {
+            font-size: 30px;
+            margin-bottom: 12px;
+            color: #111827;
+        }
+
+        .result-badge {
+            background: #fff1e6;
+            color: #c2410c;
+            border-radius: 60px;
+            padding: 6px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .result-body {
+            margin: 28px 0;
+            text-align: left;
+            background: #fef9f1;
+            padding: 24px;
+            border-radius: 28px;
+            border-left: 4px solid #f97316;
+        }
+
+        .result-body p {
+            margin-bottom: 16px;
+            line-height: 1.5;
+            font-size: 16px;
+        }
+
+        .result-cta {
+            background: #f97316;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 800;
+            border-radius: 60px;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 16px;
+        }
+
+        .result-cta:hover {
+            background: #ea580c;
+        }
+
+        .restart-quiz {
+            background: none;
+            border: none;
+            color: #6b7280;
+            margin-top: 24px;
+            font-size: 14px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .vsl-container {
+            max-width: 880px;
+            margin: 40px auto;
+            padding: 0 20px 60px;
+        }
+
+        .vsl-headline {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .vsl-headline h1 {
+            font-size: 42px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #111827, #ea580c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .vsl-headline .subhead {
+            font-size: 20px;
+            color: #374151;
+            font-weight: 500;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .video-wrapper {
+            position: relative;
+            background: #000;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.25);
+            animation: vslPulse 3s ease-in-out infinite;
+            margin: 32px 0;
+        }
+
+        .video-wrapper vturb-smartplayer {
+            width: 100% !important;
+            display: block !important;
+        }
+
+        .video-caption {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 15px;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 24px;
+        }
+
+        .trust-badge {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: #4b5563;
+        }
+
+        @media (max-width: 640px) {
+            .vsl-headline h1 { font-size: 32px; }
+            .vsl-headline .subhead { font-size: 18px; }
+        }
+        
+        .quiz-wrapper {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="quizSection" class="quiz-wrapper fade-in-up">
+    <div class="quiz-card" id="quizCard">
+        <div class="quiz-header">
+            <h1>🧠 Is Your Brain Running The Wrong Money Script?</h1>
+            <p>Answer 4 quick questions to see if old subconscious patterns are blocking your results before you watch the 7-minute fix.</p>
+        </div>
+        <div id="quizDynamicArea"></div>
+    </div>
+</div>
+
+<div id="vslSection" class="vsl-wrapper">
+    <div class="vsl-container">
+        <div class="vsl-headline">
+            <div class="subhead">Watch how Sean built a 7-minute method designed to hit the subconscious before bed tonight 👇</div>
+        </div>
+        <div class="video-wrapper">
+            <vturb-smartplayer id="vid-6966599cbabb3c836813c52f" style="display: block; margin: 0 auto; width: 100%; height: auto;"></vturb-smartplayer>
+        </div>
+        <div class="video-caption">
+            ⚡ 7 minutes • Listen before sleep • Rewires the old pattern
+        </div>
+        <div class="trust-badge">
+            <span>🎧 Used by 10,000+ listeners</span>
+            <span>🧠 Subconscious reprogramming</span>
+            <span>🌙 Theta-state method</span>
+        </div>
+    </div>
+</div>
+
+<!-- Meta Pixel & Hotmart -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '878451855254470');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=878451855254470&ev=PageView&noscript=1"/></noscript>
+<script id="hotmart_launcher_script">
+    (function(l,a,u,n,c,h,e,r){l['HotmartLauncherObject']=c;l[c]=l[c]||function(){(l[c].q=l[c].q||[]).push(arguments)},l[c].l=1*new Date();h=a.createElement(u),e=a.getElementsByTagName(u)[0];h.async=1;h.src=n;e.parentNode.insertBefore(h,e)})(window,document,'script','//launcher.hotmart.com/launcher.js','hot');
+    hot('account','3a3058a6-7369-3d97-a1a0-ba9baed71541');
+</script>
+
+<script type="text/javascript">
+    (function() {
+        var s = document.createElement("script");
+        s.src = "https://scripts.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/6966599cbabb3c836813c52f/v4/player.js";
+        s.async = true;
+        document.head.appendChild(s);
+    })();
+</script>
+
+<script>
+    // -------------------- QUIZ LOGIC (buttons fully functional, vturb never triggered) --------------------
+    const questions = [
+        {
+            text: "When it's time to go after more money, what do you do?",
+            options: ["Move fast", "Overthink", "Delay", "Freeze"]
+        },
+        {
+            text: "What's been your biggest frustration?",
+            options: ["I know what to do, but don't do it", "Nothing seems to stick", "I keep repeating the same pattern", "I'm tired of surface-level advice"]
+        },
+        {
+            text: "What have you already tried?",
+            options: ["Affirmations", "Vision boards", "Journaling", "Motivation content", "All of it"]
+        },
+        {
+            text: "What do you want now?",
+            options: ["A real shift", "A simple tool", "Something that works deeper", "Something I can use tonight"]
+        }
+    ];
+
+    let currentStep = 0;
+    let userAnswers = new Array(questions.length).fill(null);
+    let quizCompleted = false;
+    let hasHiddenHeader = false;
+    const dynamicContainer = document.getElementById('quizDynamicArea');
+    const quizCardElement = document.getElementById('quizCard');
+    const quizHeaderElement = document.querySelector('.quiz-header');
+
+    function scrollToQuizCard() {
+        if (!quizCardElement) return;
+        setTimeout(() => {
+            const rect = quizCardElement.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const targetY = rect.top + scrollTop - 16;
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
+        }, 50);
+    }
+
+    function hideQuizHeader() {
+        if (hasHiddenHeader) return;
+        if (!quizCardElement || !quizHeaderElement) return;
+        quizCardElement.classList.add('quiz-header-hidden');
+        hasHiddenHeader = true;
+        scrollToQuizCard();
+    }
+    
+    function resetQuizHeaderVisibility() {
+        if (!quizCardElement || !quizHeaderElement) return;
+        quizCardElement.classList.remove('quiz-header-hidden');
+        hasHiddenHeader = false;
+        setTimeout(() => scrollToQuizCard(), 30);
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    // Attach click handlers to all interactive quiz elements with stopPropagation (prevents vturb)
+    // but does NOT block the handlers themselves.
+    function attachQuizHandlers() {
+        // Option buttons
+        const options = document.querySelectorAll('.quiz-option');
+        options.forEach(opt => {
+            // Remove any previous listener to avoid duplicates
+            if (opt._listener) opt.removeEventListener('click', opt._listener);
+            const handler = (e) => {
+                e.stopPropagation();   // CRITICAL: vturb video won't activate
+                if (quizCompleted) return;
+                const selectedValue = opt.getAttribute('data-opt');
+                if (selectedValue) {
+                    userAnswers[currentStep] = selectedValue;
+                    // Update UI: remove selected class from all options, add to this one
+                    document.querySelectorAll('.quiz-option').forEach(el => el.classList.remove('selected'));
+                    opt.classList.add('selected');
+                    // Hide header on first interaction
+                    if (!hasHiddenHeader) hideQuizHeader();
+                }
+            };
+            opt._listener = handler;
+            opt.addEventListener('click', handler);
+        });
+
+        // Previous button
+        const prevBtn = document.getElementById('prevBtn');
+        if (prevBtn) {
+            if (prevBtn._listener) prevBtn.removeEventListener('click', prevBtn._listener);
+            const handler = (e) => {
+                e.stopPropagation();
+                if (quizCompleted) return;
+                if (currentStep > 0) {
+                    currentStep--;
+                    renderQuestionStep();
+                    if (hasHiddenHeader) scrollToQuizCard();
+                }
+            };
+            prevBtn._listener = handler;
+            prevBtn.addEventListener('click', handler);
+        }
+
+        // Next button
+        const nextBtn = document.getElementById('nextBtn');
+        if (nextBtn) {
+            if (nextBtn._listener) nextBtn.removeEventListener('click', nextBtn._listener);
+            const handler = (e) => {
+                e.stopPropagation();
+                if (quizCompleted) return;
+                
+                // Validate selection
+                if (userAnswers[currentStep] === null || userAnswers[currentStep] === undefined) {
+                    alert("Please select an option to continue.");
+                    return;
+                }
+                
+                if (!hasHiddenHeader) hideQuizHeader();
+                
+                if (currentStep === questions.length - 1) {
+                    showResultScreen();
+                } else {
+                    currentStep++;
+                    renderQuestionStep();
+                    if (hasHiddenHeader) scrollToQuizCard();
+                }
+            };
+            nextBtn._listener = handler;
+            nextBtn.addEventListener('click', handler);
+        }
+    }
+
+    function renderQuestionStep() {
+        const q = questions[currentStep];
+        const selectedVal = userAnswers[currentStep];
+        const optionsHtml = q.options.map(opt => {
+            const isSelected = (selectedVal === opt);
+            return `
+                <div class="quiz-option ${isSelected ? 'selected' : ''}" data-opt="${escapeHtml(opt)}">
+                    <div class="option-marker"></div>
+                    <span>${escapeHtml(opt)}</span>
+                </div>
+            `;
+        }).join('');
+
+        const progressPercent = ((currentStep) / questions.length) * 100;
+        const isLast = currentStep === questions.length - 1;
+        const nextText = isLast ? 'See Results' : 'Next →';
+        
+        const html = `
+            <div class="progress-area">
+                <div class="step-counter">QUESTION ${currentStep+1} / ${questions.length}</div>
+                <div class="progress-bar-bg"><div class="progress-fill" style="width: ${progressPercent}%;"></div></div>
+            </div>
+            <div class="question-text">${escapeHtml(q.text)}</div>
+            <div class="options-group" id="optionsGroup">
+                ${optionsHtml}
+            </div>
+            <div class="nav-buttons">
+                <button class="btn-nav btn-secondary" id="prevBtn" ${currentStep === 0 ? 'disabled style="opacity:0.4;cursor:not-allowed;"' : ''}>← Back</button>
+                <button class="btn-nav btn-primary" id="nextBtn">${nextText}</button>
+            </div>
+        `;
+        
+        dynamicContainer.innerHTML = html;
+        attachQuizHandlers();  // bind fresh handlers with stopPropagation
+        
+        if (hasHiddenHeader) scrollToQuizCard();
+    }
+
+    function showResultScreen() {
+        quizCompleted = true;
+        const resultHtml = `
+            <div class="result-screen">
+                <div class="result-badge">🧠 SUBCONSCIOUS SCAN COMPLETE</div>
+                <h2>Assessment Complete: Old Money Script Detected</h2>
+                <p style="font-size: 16px; color: #374151; margin-bottom: 16px;">Your answers suggest the issue may not be motivation. It may be an old subconscious script that keeps replaying the same results.</p>
+                <div class="result-body">
+                    <p>✨ <strong>That's why affirmations, vision boards, and "trying harder" haven't fully worked.</strong> They only hit the conscious surface. The real pattern lives deeper — buried in your subconscious programming.</p>
+                    <p>🧠 <strong>Theta state before sleep is the key.</strong> When your brain slows down, that's when old "broke code" can be rewritten. Most tools ignore this critical window.</p>
+                    <p>🔓 <strong>The 7-Minute Manifest Script is different.</strong> It speaks directly to the subconscious during that receptive state — clearing the hidden block and installing a new money script in just minutes a day.</p>
+                    <p>👇 In the next short video, Sean Ali shows exactly how it works, why effort fails, and why this script rewires your financial reality faster than anything you've tried.</p>
+                </div>
+                <button class="result-cta" id="revealVslBtn">🎬 Watch How The 7-Minute Script Works →</button>
+                <button class="restart-quiz" id="restartQuizBtn">⟳ Retake assessment</button>
+            </div>
+        `;
+        dynamicContainer.innerHTML = resultHtml;
+        
+        const revealBtn = document.getElementById('revealVslBtn');
+        const restartBtn = document.getElementById('restartQuizBtn');
+        
+        if (revealBtn) {
+            revealBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                revealVslPage();
+            });
+        }
+        if (restartBtn) {
+            restartBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                resetQuiz();
+            });
+        }
+        scrollToQuizCard();
+    }
+
+    function resetQuiz() {
+        currentStep = 0;
+        userAnswers = new Array(questions.length).fill(null);
+        quizCompleted = false;
+        resetQuizHeaderVisibility();
+        renderQuestionStep();
+        scrollToQuizCard();
+    }
+
+    function revealVslPage() {
+        const quizSection = document.getElementById('quizSection');
+        const vslSection = document.getElementById('vslSection');
+        if (quizSection && vslSection) {
+            quizSection.style.display = 'none';
+            vslSection.style.display = 'block';
+            setTimeout(() => {
+                window.dispatchEvent(new Event('resize'));
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 80);
+        }
+    }
+
+    // No global capture listener that would block quiz interactions.
+    // Each interactive element uses its own stopPropagation to isolate vturb.
+    
+    // Initialize quiz
+    renderQuestionStep();
+    
+    window.addEventListener('resize', () => {
+        if (hasHiddenHeader && !quizCompleted && document.getElementById('quizSection') && document.getElementById('quizSection').style.display !== 'none') {
+            scrollToQuizCard();
+        }
+    });
+    
+    console.log("Quiz fully interactive — buttons work, vturb remains inactive.");
+</script>
+</body>
+</html>

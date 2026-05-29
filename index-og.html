@@ -1,0 +1,903 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  width: 100% !important;
+  overflow-x: hidden !important;
+  background: #f9f8ff;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+#page, .page, .pageWrapper, .page-wrapper, .page-container, .page-content,
+.elPageContent, .elPageMainContent, .elPageBody, .elPageWrapper {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  min-height: 0 !important;
+}
+
+div:empty { display: none !important; }
+body > *:last-child { margin-bottom: 0 !important; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ── UTILITY ── */
+.wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ── SOCIAL PROOF BAR ── */
+#hm-proof-bar {
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  padding: 9px 16px;
+  text-align: center;
+}
+#hm-proof-bar .inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  max-width: 680px;
+  margin: 0 auto;
+}
+#hm-proof-bar span {
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+#hm-proof-bar .dot { width: 5px; height: 5px; background: rgba(255,255,255,.4); border-radius: 50%; }
+
+/* ── HEADING BLOCK ── */
+.hm-video {
+  max-width: 680px;
+  margin: 20px auto 0;
+  padding: 0 16px;
+  text-align: center;
+  font-family: 'Sora', sans-serif;
+}
+.hm-video .headline {
+  margin: 0 0 6px;
+  font-size: clamp(20px, 4.5vw, 26px);
+  font-weight: 900;
+  line-height: 1.25;
+  color: #0f172a;
+}
+.hm-video .sub {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #64748b;
+  font-family: 'DM Sans', sans-serif;
+  font-style: italic;
+}
+
+/* ── STAR ROW ── */
+.star-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  flex-wrap: wrap;
+}
+.stars { color: #f59e0b; font-size: 18px; letter-spacing: 1px; }
+.star-label { font-size: 13px; font-weight: 700; color: #0f172a; font-family: 'Sora', sans-serif; }
+.viewers-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #dc2626;
+  font-family: 'Sora', sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.viewers-pill .blink {
+  width: 7px; height: 7px;
+  background: #dc2626;
+  border-radius: 50%;
+  animation: blink 1.2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* ── VIDEO WRAPPER ── */
+#hm-waveframe {
+  width: 95%;
+  max-width: 560px;
+  margin: 0 auto 14px;
+  padding: 10px;
+  border-radius: 20px;
+  background: radial-gradient(130% 130% at 50% 0%, #ede9fe 0%, #ffffff 60%);
+  box-shadow: 0 12px 28px rgba(2,6,23,.1);
+  position: relative;
+  animation: hmPulse 4s ease-in-out infinite;
+}
+@keyframes hmPulse {
+  0%,100%{box-shadow:0 10px 24px rgba(2,6,23,.08),0 0 0 0 rgba(109,40,217,.12)}
+  50%{box-shadow:0 14px 30px rgba(2,6,23,.12),0 0 0 10px rgba(109,40,217,.04)}
+}
+
+/* ── SCARCITY STRIP ── */
+.scarcity-strip {
+  max-width: 560px;
+  margin: 0 auto 10px;
+  padding: 0 16px;
+}
+.scarcity-inner {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.scarcity-inner span {
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #92400e;
+}
+
+/* ── COUNTDOWN ── */
+#hm-countdown {
+  max-width: 560px;
+  margin: 0 auto 18px;
+  padding: 0 16px;
+  text-align: center;
+}
+.countdown-label {
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #dc2626;
+  margin-bottom: 8px;
+}
+.countdown-boxes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.cd-box {
+  background: #0f172a;
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-weight: 900;
+  font-size: clamp(22px, 5vw, 30px);
+  min-width: 60px;
+  padding: 10px 6px 6px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(0,0,0,.2);
+  line-height: 1;
+}
+.cd-box .cd-sub {
+  display: block;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+.cd-sep {
+  font-family: 'Sora', sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: #dc2626;
+  margin-bottom: 14px;
+}
+
+/* ── CTA SECTION ── */
+#hm-cta {
+  max-width: 680px;
+  margin: 0 auto 0;
+  padding: 0 16px 28px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.offer-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.offer-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  color: #0f172a;
+}
+.price-badge {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid rgba(245,158,11,.3);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+}
+.bestseller-badge {
+  background: linear-gradient(90deg, #f59e0b, #f97316);
+  color: #fff;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+/* Product card */
+.product-card {
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 18px rgba(0,0,0,.05);
+}
+.product-card .product-name {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  color: #0f172a;
+  margin: 0 0 4px;
+}
+.product-card .product-sub {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0 0 10px;
+}
+.product-card .price-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.price-now {
+  font-family: 'Sora', sans-serif;
+  font-weight: 900;
+  font-size: 26px;
+  color: #16a34a;
+}
+.price-was {
+  font-size: 16px;
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: grid;
+  gap: 7px;
+}
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.4;
+}
+.checklist li::before {
+  content: '✓';
+  color: #16a34a;
+  font-weight: 800;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* CTA button */
+.cta-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-weight: 900;
+  font-size: clamp(18px, 4vw, 22px);
+  padding: 18px 24px;
+  border-radius: 14px;
+  box-shadow: 0 14px 30px rgba(34,197,94,.28);
+  transition: transform .15s ease, box-shadow .15s ease;
+  margin: 4px 0 10px;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(34,197,94,.34);
+}
+.cta-btn-sub {
+  text-align: center;
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 16px;
+}
+
+/* Trust badges */
+.trust-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 14px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 16px;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+}
+.trust-icon { font-size: 16px; }
+
+/* Testimonials */
+.testimonials-section {
+  margin-bottom: 0;
+}
+.testimonials-section h4 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  color: #0f172a;
+  margin: 0 0 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.proof-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.proof-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  display: block;
+}
+
+/* Bump offers */
+.bump-offer {
+  border: 2px dashed #f59e0b;
+  border-radius: 16px;
+  background: #fffbeb;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.bump-checkbox {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: #f59e0b;
+}
+.bump-content .bump-yes {
+  font-family: 'Sora', sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+.bump-content .bump-price-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.bump-price-now { color: #f97316; font-weight: 900; font-family: 'Sora', sans-serif; font-size: 15px; }
+.bump-price-was { color: #94a3b8; text-decoration: line-through; font-size: 13px; }
+.bump-content .bump-desc { font-size: 13px; color: #64748b; line-height: 1.4; }
+
+/* ── FAQ ── */
+#hm-objections {
+  max-width: 680px;
+  margin: 0 auto 28px;
+  padding: 0 16px;
+  font-family: 'DM Sans', sans-serif;
+}
+.faq-header {
+  text-align: center;
+  margin-bottom: 14px;
+}
+.faq-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ecfeff;
+  border: 1px solid rgba(6,182,212,.25);
+  color: #0e7490;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .3px;
+  margin-bottom: 10px;
+}
+.faq-header h3 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 900;
+  font-size: clamp(18px, 4vw, 22px);
+  color: #0f172a;
+  margin: 0 0 6px;
+  line-height: 1.2;
+}
+.faq-header p {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.faq-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+.hm-faq { display: grid; gap: 2px; }
+
+details {
+  border-bottom: 1px solid #f1f5f9;
+}
+details:last-child { border-bottom: none; }
+
+details summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  user-select: none;
+}
+details summary::-webkit-details-marker { display: none; }
+
+details summary .q-text {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 14px;
+  line-height: 1.3;
+  flex: 1;
+}
+details summary .q-icon {
+  font-size: 20px;
+  font-weight: 900;
+  color: #7c3aed;
+  transition: transform .2s ease;
+  flex-shrink: 0;
+  line-height: 1;
+}
+details[open] summary .q-icon { transform: rotate(45deg); }
+
+details .a-body {
+  padding: 0 16px 14px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+}
+details .a-body p { margin: 0 0 6px; }
+details .a-body p:last-child { margin: 0; }
+
+/* Final CTA in FAQ */
+.faq-cta-wrap {
+  text-align: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-top: 1px solid #bbf7d0;
+}
+
+/* ── FOOTER ── */
+#hm-footer {
+  max-width: 680px;
+  margin: 0 auto 32px;
+  padding: 20px 16px 0;
+  text-align: center;
+  font-size: 12px;
+  color: #94a3b8;
+  font-family: 'DM Sans', sans-serif;
+  border-top: 1px solid #e2e8f0;
+}
+#hm-footer a { color: #7c3aed; text-decoration: none; }
+#hm-footer a:hover { text-decoration: underline; }
+#hm-footer .support-email {
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+#hm-footer .legal-links {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 8px 0 4px;
+}
+
+/* ── STICKY CTA (mobile) ── */
+#hmStickyCTA {
+  display: none;
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 9999;
+  padding: 10px 14px;
+  background: rgba(255,255,255,.96);
+  border-top: 1px solid rgba(15,23,42,.06);
+  backdrop-filter: saturate(140%) blur(8px);
+}
+#hmStickyCTA a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Sora', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+  box-shadow: 0 10px 22px rgba(34,197,94,.28);
+}
+
+/* ── RESPONSIVE ── */
+@media (min-width: 560px) {
+  .proof-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .hm-video, #hm-waveframe, #hm-cta, #hm-objections { max-width: 100% !important; }
+}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '878451855254470');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=878451855254470&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+		<script id="hotmart_launcher_script">
+			(function(l,a,u,n,c,h,e,r){l['HotmartLauncherObject']=c;l[c]=l[c]||function(){
+			(l[c].q=l[c].q||[]).push(arguments)},l[c].l=1*new Date();h=a.createElement(u),
+			e=a.getElementsByTagName(u)[0];h.async=1;h.src=n;e.parentNode.insertBefore(h,e)
+			})(window,document,'script','//launcher.hotmart.com/launcher.js','hot');
+
+			hot('account','3a3058a6-7369-3d97-a1a0-ba9baed71541');
+		</script>
+
+
+<!-- ② HEADLINE + VIDEO -->
+<div class="hm-video">
+  <div class="star-row">
+    <span class="viewers-pill"><span class="blink"></span>14 people watching now</span>
+  </div>
+  <p class="sub">Watch until the end to see why this works best before bed…</p>
+</div>
+
+<!-- ③ VIDEO PLAYER -->
+<div id="hm-waveframe">
+<vturb-smartplayer id="vid-6966599cbabb3c836813c52f" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/6966599cbabb3c836813c52f/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
+</div>
+
+
+<!-- ⑥ MAIN CTA SECTION -->
+<section id="hm-cta" style="display:none;" aria-hidden="true">
+
+  <!-- Badges -->
+  <div class="offer-badge-row">
+    <span class="offer-title">The 7-Minute Script System</span>
+    <span class="bestseller-badge">🏆 #1 Best Seller</span>
+    <span class="price-badge">Reg <s>$373</s> · Today $37</span>
+  </div>
+
+  <!-- Product card -->
+  <div class="product-card">
+    <p class="product-name">The 7-Minute Script System</p>
+    <p class="product-sub">Just press play before bed tonight.</p>
+    <div class="price-row">
+      <span class="price-now">$37.00</span>
+      <span class="price-was">$373.00</span>
+      <span style="background:#dcfce7;color:#15803d;border-radius:999px;padding:3px 9px;font-size:12px;font-weight:800;font-family:'Sora',sans-serif;">Save 90%</span>
+    </div>
+    <ul class="checklist">
+      <li>Instant digital access — stream or download</li>
+      <li>7-minute audio that rewires money loops before sleep</li>
+      <li>Works even if you've tried everything else before</li>
+      <li>No steps, no setup — just press play</li>
+      <li>Belief not required — your brain does the work</li>
+    </ul>
+  </div>
+
+
+  <!-- CTA button -->
+  <a href="https://pay.hotmart.com/F102533819G?checkoutMode=10" class="cta-btn" aria-label="Get the 7-Minute Script for 37 dollars">
+    🔒 Get The Script For $37 →
+  </a>
+  <p class="cta-btn-sub">One-click checkout · Secure · Instant Access</p>
+
+  <!-- Trust badges -->
+  <div class="trust-row">
+    <div class="trust-item"><span class="trust-icon">🔒</span> 100% Secure Checkout</div>
+    <div class="trust-item"><span class="trust-icon">⚡</span> Instant Access</div>
+    <div class="trust-item"><span class="trust-icon">💳</span> Card &amp; PayPal</div>
+    <div class="trust-item"><span class="trust-icon">🛡️</span> Money-Back Guarantee</div>
+  </div>
+
+  <!-- Social proof quote -->
+  <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:14px;padding:14px 16px;margin-bottom:16px;text-align:center;">
+    <div style="color:#f59e0b;font-size:16px;margin-bottom:4px;">⭐⭐⭐⭐⭐</div>
+    <p style="font-size:15px;font-style:italic;color:#15803d;font-weight:600;margin:0 0 4px;">"Life changing audio. Instantly felt the shift."</p>
+    <span style="font-size:12px;color:#64748b;font-weight:600;">– Jessica R., Verified Buyer</span>
+  </div>
+
+  <!-- Testimonial images -->
+  <div class="testimonials-section">
+    <h4>⭐ Real Results From Real People</h4>
+    <div class="proof-grid">
+      <img loading="lazy" alt="Customer testimonial" src="https://payhip.com/cdn-cgi/image/format=auto/https://pe56d.s3.amazonaws.com/o_1j2c7s3u11gojgrbu651qj5f2er.png">
+      <img loading="lazy" alt="Customer testimonial" src="https://payhip.com/cdn-cgi/image/format=auto/https://pe56d.s3.amazonaws.com/o_1j2c80mab1kjkiic1efnrev1fdrr.png">
+      <img loading="lazy" alt="Customer testimonial" src="https://images.clickfunnels.com/cdn-cgi/image/width=600,fit=scale-down,f=auto,q=80/https://statics.myclickfunnels.com/workspace/vGVGzP/image/18841159/file/a4c2937975eb791cb48d87fa3acc4bba.png">
+    </div>
+  </div>
+
+  <div style="height:18px;"></div>
+
+</section>
+
+<!-- ⑦ FAQ SECTION -->
+<section id="hm-objections" style="display:none;" aria-hidden="true">
+  <div class="faq-header">
+    <div class="faq-pill">💬 Quick Answers Before You Decide</div>
+    <h3>"Wait… is this actually worth it?"</h3>
+    <p>These are the questions smart buyers ask. Here are real answers.</p>
+  </div>
+
+  <div class="faq-card">
+    <div class="hm-faq">
+
+      <details>
+        <summary>
+          <span class="q-text">What happens tonight when I press play?</span>
+          <span class="q-icon">+</span>
+        </summary>
+        <div class="a-body">
+          <p>Most people feel a shift fast: your body unwinds, thoughts slow down, chest pressure eases, and your mind drops out of survival mode. You don't need to do anything — just listen.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="q-text">How fast do I get access?</span>
+          <span class="q-icon">+</span>
+        </summary>
+        <div class="a-body">
+          <p>Instantly. Your audios arrive by email in under 2 minutes. Didn't see it? Check your Promotions or Spam folder — then search your inbox for <strong>"Hypnotic Meditations"</strong>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="q-text">How do I listen?</span>
+          <span class="q-icon">+</span>
+        </summary>
+        <div class="a-body">
+          <p>Any phone or computer. Just press play before sleep. No app needed, no setup. Stream right from the link in your email or download to listen offline.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="q-text">Is this beginner-friendly?</span>
+          <span class="q-icon">+</span>
+        </summary>
+        <div class="a-body">
+          <p>Yes. No steps, no setup. One audio. One nightly routine. That's it. If you've never meditated or tried anything like this before, this was built for you.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="q-text">Do I have to "believe" for it to work?</span>
+          <span class="q-icon">+</span>
+        </summary>
+        <div class="a-body">
+          <p>No. If you can relax and listen, your brain can absorb the new pattern. Think of it like a <strong>7-minute reset button</strong> — belief is not required.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="q-text">Are there better options out there?</span>
+          <span class="q-icon">+</span>
+        </summary>
+        <div class="a-body">
+          <p>Most alternatives are long, complicated, or require daily effort. This is built to be <strong>short and repeatable</strong> — 7 minutes before bed, nothing more. That's why people actually stick with it.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="q-text">Is there a guarantee?</span>
+          <span class="q-icon">+</span>
+        </summary>
+        <div class="a-body">
+          <p>Yes. Try it nightly. If you don't feel a real internal shift, email <a href="mailto:support@hypnoticmeditations.ai" style="color:#7c3aed;font-weight:600;">support@hypnoticmeditations.ai</a> and we'll help you — no hassle.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="q-text">Is this product really worth it?</span>
+          <span class="q-icon">+</span>
+        </summary>
+        <div class="a-body">
+          <p>At $37 for instant access, you're getting a tool that thousands of people are using nightly to feel calmer, more abundant, and more aligned. Think of it like a <strong>7-minute reset button</strong> — at less than the cost of a dinner out.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span class="q-text">Payment not working?</span>
+          <span class="q-icon">+</span>
+        </summary>
+        <div class="a-body">
+          <p>Try a different browser (Safari or Chrome work best). If the page doesn't open, turn off your VPN or ad-blocker and try again. Still stuck? Email <a href="mailto:support@hypnoticmeditations.ai" style="color:#7c3aed;font-weight:600;">support@hypnoticmeditations.ai</a> and we'll sort it.</p>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- CTA inside FAQ card -->
+    <div class="faq-cta-wrap">
+      <a href="https://pay.hotmart.com/F102533819G?checkoutMode=10"
+         style="display:inline-block;text-decoration:none;background:linear-gradient(90deg,#16a34a,#22c55e);color:#fff;font-family:'Sora',sans-serif;font-weight:900;font-size:17px;padding:14px 28px;border-radius:12px;box-shadow:0 10px 24px rgba(34,197,94,.24);">
+        Yes — Unlock The Script For $37
+      </a>
+      <p style="font-size:12px;color:#64748b;margin:8px 0 0;">Instant access · Secure checkout · Money-back guarantee</p>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ FOOTER -->
+<footer id="hm-footer" style="display:none;" aria-hidden="true">
+  <p class="support-email">Need help? <a href="mailto:support@hypnoticmeditations.ai">support@hypnoticmeditations.ai</a></p>
+  <div class="legal-links">
+    <a href="#">Terms</a>
+    <a href="#">Refunds</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+  <p style="margin:6px 0 0;font-size:11px;">© 2026 Hypnotic Meditations. All rights reserved.<br>Results may vary. This product is for entertainment and personal growth purposes only.</p>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div id="hmStickyCTA">
+  <a href="https://pay.hotmart.com/F102533819G?checkoutMode=10">🔒 Get The Script For $37 →</a>
+</div>
+
+<script>
+/* ── COUNTDOWN TIMER ── */
+(function(){
+  var DURATION = (14 * 3600) + (40 * 60) + 37;
+  var key = 'hmCdEnd';
+  var end = parseInt(sessionStorage.getItem(key) || '0', 10);
+  if (!end || end < Date.now()) {
+    end = Date.now() + DURATION * 1000;
+    sessionStorage.setItem(key, end);
+  }
+  function tick(){
+    var left = Math.max(0, Math.floor((end - Date.now()) / 1000));
+    var h = Math.floor(left / 3600);
+    var m = Math.floor((left % 3600) / 60);
+    var s = left % 60;
+    var hEl = document.getElementById('cd-h');
+    var mEl = document.getElementById('cd-m');
+    var sEl = document.getElementById('cd-s');
+    if(hEl) hEl.textContent = String(h).padStart(2,'0');
+    if(mEl) mEl.textContent = String(m).padStart(2,'0');
+    if(sEl) sEl.textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+/* ── UNLOCK CTA ── */
+(function(){
+  var UNLOCK_AFTER_MS = 8 * 60 * 1000;
+  var cta       = document.getElementById('hm-cta');
+  var faq       = document.getElementById('hm-objections');
+  var footer    = document.getElementById('hm-footer');
+  var bar       = document.getElementById('hmStickyCTA');
+  window.hmCTAUnlocked = false;
+
+  function unlockCTA(){
+    if (window.hmCTAUnlocked) return;
+    window.hmCTAUnlocked = true;
+    [cta, faq, footer].forEach(function(el){
+      if(el){ el.style.display = ''; el.removeAttribute('aria-hidden'); }
+    });
+    if (bar && window.matchMedia && window.matchMedia('(max-width:640px)').matches) {
+      bar.style.display = 'block';
+    }
+  }
+
+  setTimeout(unlockCTA, UNLOCK_AFTER_MS);
+
+  window.addEventListener('message', function(e){
+    try{
+      var d = (typeof e.data === 'string') ? JSON.parse(e.data) : e.data;
+      if (d && (d.event === 'ended' || d.type === 'ended' || (d.currentTime >= 450))) { unlockCTA(); }
+    } catch(err){}
+  }, false);
+})();
+
+/* ── FAQ ACCORDION (one open at a time) ── */
+(function(){
+  var wrap = document.querySelector('#hm-objections .hm-faq');
+  if(!wrap) return;
+  var items = wrap.querySelectorAll('details');
+  items.forEach(function(d){
+    d.addEventListener('toggle', function(){
+      if(!d.open) return;
+      items.forEach(function(other){ if(other !== d) other.removeAttribute('open'); });
+    });
+  });
+})();
+</script>

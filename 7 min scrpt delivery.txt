@@ -1,0 +1,1331 @@
+<!-- ===============================
+HYPNOTIC MEDITATIONS • ULTRA-SIMPLE THANK YOU PAGE (FIXED + RICH LIBRARY VAULT)
+✅ Fixed broken/unclosed tags
+✅ Fixed COMMUNITY accordion nesting
+✅ Accordion JS works even when CF2 injects late (runs now + DOMContentLoaded + load)
+✅ "Tonight – Do This Tonight" stays OPEN (normal section)
+✅ All accordions default CLOSED unless data-hm-default="open"
+✅ FAQ <details> forced CLOSED on load
+✅ NEW: "Your Library" now feels like a $997 premium vault (rich, gold, power)
+✅ UPDATED: All CDN links now include /Products/ folder prefix
+================================= -->
+
+<style>
+  .hm-thx * { box-sizing: border-box; }
+
+  .hm-thx {
+    --ink:#0f172a;
+    --sub:#475569;
+    --paper:#ffffff;
+    --soft:#fffaf0;
+
+    max-width:960px;
+    margin:32px auto 40px;
+    padding:26px 20px 36px;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--ink);
+    font-size:20px;
+    line-height:1.7;
+  }
+
+  /* HEADER */
+  .hm-head { text-align:center; margin-bottom:18px; }
+  .hm-pill{
+    display:inline-block;background:#ecfdf3;border:2px solid #4ade80;color:#166534;
+    font-weight:800;padding:10px 20px;border-radius:999px;box-shadow:0 10px 24px rgba(22,101,52,.18);
+    font-size:18px;margin-bottom:12px;
+  }
+  .hm-title{
+    margin:8px 0 10px;font-size:40px;line-height:1.2;font-weight:900;text-transform:uppercase;
+  }
+  .hm-sub{ margin:0;font-size:20px;color:var(--sub); }
+
+  /* SECTION DIVIDER */
+  .hm-break{
+    height:1px;background:linear-gradient(90deg, rgba(148,163,184,0), rgba(148,163,184,.55), rgba(148,163,184,0));
+    margin:34px 0;
+  }
+  .hm-break-label{
+    display:flex;align-items:center;justify-content:center;gap:10px;margin:-18px 0 24px;
+    font-size:12px;letter-spacing:.18em;font-weight:900;text-transform:uppercase;color:#94a3b8;
+  }
+  .hm-break-label span{
+    background:var(--soft);padding:6px 10px;border-radius:999px;border:1px solid #e5e7eb;
+  }
+
+  /* MAIN BUTTON */
+  .hm-main-btn-wrap{ text-align:center; margin:26px 0 42px; }
+  .hm-main-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:18px 28px;border-radius:999px;background:linear-gradient(90deg,#f97316,#fb923c);
+    color:#ffffff;text-decoration:none;font-weight:900;font-size:20px;
+    box-shadow:0 16px 34px rgba(249,115,22,.35);border:none;cursor:pointer;
+  }
+
+  /* GENERIC CARD SECTION */
+  .hm-section{
+    background:var(--paper);border-radius:18px;border:2px solid #e5e7eb;
+    padding:26px 20px 26px;margin:0;box-shadow:0 12px 30px rgba(15,23,42,.05);
+  }
+  .hm-section + .hm-section{ margin-top:34px; }
+  .hm-section h2{ margin:0 0 10px;font-size:26px;font-weight:900; }
+  .hm-section p{ margin:6px 0 12px;font-size:18px;color:var(--sub); }
+
+  /* TODAY STEPS */
+  .hm-steps{ list-style:none;padding:0;margin:12px 0 0; }
+  .hm-step{ display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-top:1px solid #e5e7eb; }
+  .hm-step:first-child{ border-top:none; }
+  .hm-step-number{
+    flex:0 0 34px;height:34px;border-radius:999px;background:#eef2ff;color:#3730a3;
+    font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:6px;
+  }
+  .hm-step-body{ flex:1;font-size:18px;color:#111827; }
+  .hm-step-body strong{ font-weight:900; }
+  .hm-small-note{ font-size:16px;color:#6b7280;margin-top:6px; }
+
+  /* AUDIO BLOCKS */
+  .hm-audio-block{
+    margin-top:10px;background:#f9fafb;border-radius:14px;padding:12px 12px 10px;border:1px solid #e5e7eb;
+  }
+  .hm-audio-label{ font-size:16px;font-weight:700;margin-bottom:6px; }
+  .hm-audio-block audio{ width:100%; }
+
+  /* VIDEO WRAP */
+  .hm-video-wrap{
+    margin-top:10px;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;background:#0b1220;
+  }
+
+  /* WEEK PLAN LIST */
+  .hm-week-list{ list-style:none;padding:0;margin:10px 0 0;font-size:18px;color:#111827; }
+  .hm-week-list li{ padding:8px 0; }
+
+  /* LIBRARY (base) */
+  .hm-lib-group{ margin-top:18px;padding-top:18px;border-top:1px solid #e5e7eb; }
+  .hm-lib-group:first-child{ border-top:none;padding-top:0; }
+  .hm-lib-title{ font-size:20px;font-weight:900;margin:0 0 6px; }
+  .hm-lib-tag{
+    font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#9ca3af;margin-bottom:4px;
+  }
+  .hm-lib-items{ list-style:none;padding:0;margin:0; }
+  .hm-lib-items li{ margin:7px 0;font-size:18px; }
+  .hm-lib-link{ text-decoration:none;color:#2563eb;font-weight:800; }
+  .hm-lib-link span.kind{
+    font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;margin-left:8px;
+  }
+
+  /* SMALL CALLOUT */
+  .hm-callout{
+    margin-top:16px;padding:14px 16px;border-radius:14px;background:#fef3c7;border:1px solid #facc15;
+    font-size:18px;color:#854d0e;
+  }
+
+  /* SUPPORT + FOOTER */
+  .hm-support{ margin-top:0;font-size:18px;color:#111827; }
+  .hm-support p{ margin:6px 0; }
+  .hm-footer{ margin-top:18px;text-align:center;font-size:16px;color:#6b7280; }
+
+  /* RESPONSIVE */
+  @media (min-width:720px){
+    .hm-title{ font-size:44px; }
+    .hm-section{ padding:30px 24px 30px; }
+  }
+
+  /* ===============================
+     SIMPLE ACCORDION WRAPPER
+     =============================== */
+  .hm-acc{
+    border-radius:18px;
+    border:2px solid #e5e7eb;
+    background:var(--paper);
+    box-shadow:0 12px 30px rgba(15,23,42,.05);
+    overflow:hidden;
+  }
+  .hm-acc + .hm-acc{ margin-top:26px; }
+
+  .hm-acc-btn{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:18px 18px;
+    background:linear-gradient(180deg,#ffffff,#fbfbfb);
+    border:none;
+    cursor:pointer;
+    text-align:left;
+  }
+  .hm-acc-title{
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:-.01em;
+    color:#0f172a;
+  }
+  .hm-acc-sub{
+    margin-top:4px;
+    font-size:14px;
+    font-weight:700;
+    color:#64748b;
+  }
+  .hm-acc-left{ display:flex; flex-direction:column; }
+  .hm-acc-ic{
+    flex:0 0 auto;
+    width:34px;height:34px;
+    border-radius:999px;
+    display:flex;align-items:center;justify-content:center;
+    background:#eef2ff;
+    color:#3730a3;
+    font-weight:900;
+    box-shadow:0 10px 22px rgba(2,6,23,.10);
+  }
+  .hm-acc-chevron{
+    flex:0 0 auto;
+    width:34px;height:34px;border-radius:999px;
+    display:flex;align-items:center;justify-content:center;
+    background:#f1f5f9;color:#0f172a;font-weight:900;
+    transform:rotate(0deg);
+    transition:transform .18s ease;
+  }
+  .hm-acc-body{
+    padding:0 18px 18px;
+    display:none;
+  }
+  .hm-acc.open .hm-acc-body{ display:block; }
+  .hm-acc.open .hm-acc-chevron{ transform:rotate(180deg); }
+  .hm-acc-body .hm-section{ border:none; box-shadow:none; padding:14px 0 0; }
+  .hm-acc-body .hm-section h2{ margin-top:6px; }
+
+  /* PREHERO CARD */
+  .hm-prehero{
+    background:linear-gradient(180deg,#ffffff,#fff7ed);
+    border:2px solid #fed7aa;
+    border-radius:20px;
+    padding:18px 16px;
+    box-shadow:0 18px 45px rgba(15,23,42,.08);
+    margin:0 0 22px;
+  }
+  .hm-prehero-top{
+    display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;
+  }
+  .hm-prehero-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#111827;color:#ffffff;
+    padding:10px 14px;border-radius:999px;
+    font-weight:900;font-size:14px;
+    box-shadow:0 14px 30px rgba(2,6,23,.18);
+  }
+  .hm-prehero-badge b{
+    background:#fde047;color:#111827;
+    padding:2px 10px;border-radius:999px;
+    font-weight:900;
+  }
+  .hm-prehero h2{
+    margin:10px 0 6px;
+    font-size:26px;line-height:1.15;
+    font-weight:900;letter-spacing:-.02em;
+    color:#0f172a;
+  }
+  .hm-prehero p{
+    margin:0 0 12px;
+    font-size:18px;line-height:1.55;
+    color:#334155;
+  }
+
+  .hm-prehero-ctaWrap{
+    display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+    margin:14px 0 14px;
+  }
+  .hm-prehero-btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:18px 22px;border-radius:999px;
+    background:linear-gradient(90deg,#ef4444,#f59e0b);
+    color:#ffffff;text-decoration:none;
+    font-weight:900;font-size:18px;
+    box-shadow:0 18px 40px rgba(239,68,68,.25);
+    border:0;
+    transform:translateZ(0);
+    position:relative;
+    overflow:hidden;
+  }
+  .hm-prehero-btn:before{
+    content:"";
+    position:absolute;inset:-2px;
+    background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), rgba(255,255,255,0) 55%);
+    opacity:.8;
+    pointer-events:none;
+  }
+  .hm-prehero-btn:hover{ transform:translateY(-1px); }
+  .hm-prehero-btn small{
+    display:block;font-size:12px;font-weight:900;opacity:.95;letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .hm-prehero-mini{
+    font-size:14px;color:#64748b;font-weight:800;
+  }
+
+  .hm-prehero-steps{
+    list-style:none;padding:0;margin:10px 0 0;
+    border-top:1px solid #e5e7eb;
+  }
+  .hm-prehero-steps li{
+    display:flex;gap:12px;align-items:flex-start;
+    padding:12px 0;border-bottom:1px solid #e5e7eb;
+  }
+  .hm-prehero-steps li:last-child{ border-bottom:none; }
+  .hm-prehero-num{
+    flex:0 0 34px;height:34px;border-radius:999px;
+    background:#111827;color:#fde047;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:900;
+    box-shadow:0 10px 22px rgba(2,6,23,.12);
+    margin-top:2px;
+  }
+  .hm-prehero-stepText{
+    flex:1;
+    font-size:18px;
+    color:#111827;
+    font-weight:800;
+  }
+  .hm-prehero-stepText span{
+    display:block;
+    font-size:14px;
+    font-weight:700;
+    color:#64748b;
+    margin-top:2px;
+  }
+
+  @media (min-width:720px){
+    .hm-prehero{ padding:22px 20px; }
+    .hm-prehero h2{ font-size:30px; }
+    .hm-prehero-btn{ font-size:20px; padding:20px 26px; }
+  }
+
+  /* ===== EYE-EASE GLOBAL RHYTHM ===== */
+  .hm-thx{
+    padding:34px 20px 46px;
+    line-height:1.78;
+  }
+  .hm-head{ margin-bottom:28px; }
+  .hm-pill{ margin-bottom:16px; }
+  .hm-title{ margin:10px 0 14px; }
+  .hm-sub{ margin:0 0 8px; }
+  .hm-thx > vturb-smartplayer{ margin-top:14px !important; }
+  .hm-video-spacer{ height:18px; }
+  .hm-break{ margin:52px 0; }
+  .hm-break-label{ margin:-22px 0 30px; }
+  .hm-section{ padding:30px 22px 30px; }
+  .hm-section + .hm-section{ margin-top:44px; }
+  .hm-section h2{ margin:0 0 14px; }
+  .hm-section p{ margin:10px 0 16px; line-height:1.72; }
+  .hm-prehero{ margin:18px 0 34px; padding:22px 18px; }
+  .hm-prehero p{ margin:10px 0 16px; }
+  .hm-steps{ margin:18px 0 0; }
+  .hm-step{ padding:20px 0; }
+  .hm-step-body{ line-height:1.7; }
+  .hm-small-note{ margin-top:10px; }
+  .hm-audio-block{ margin-top:14px; padding:14px 14px 12px; }
+  .hm-audio-label{ margin-bottom:10px; }
+  .hm-callout{ margin-top:22px; padding:16px 18px; }
+  .hm-acc + .hm-acc{ margin-top:34px; }
+  .hm-acc-btn{ padding:20px 18px; }
+  .hm-acc-body{ padding:6px 18px 22px; }
+  .hm-lib-group{ margin-top:26px; padding-top:26px; }
+  .hm-lib-items li{ margin:10px 0; }
+
+  @media (max-width:520px){
+    .hm-thx{ padding:30px 16px 44px; }
+    .hm-break{ margin:48px 0; }
+    .hm-section{ padding:28px 18px; }
+    .hm-acc-btn{ padding:18px 16px; }
+  }
+
+  /* ===============================
+     LIBRARY — RICH VAULT UPGRADE
+     =============================== */
+  .hm-lib-vault{
+    margin-top:14px;
+    border-radius:22px;
+    padding:18px 16px;
+    border:3px solid #fbbf24;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(251,191,36,.22), rgba(251,191,36,0) 55%),
+      radial-gradient(circle at 85% 0%, rgba(239,68,68,.18), rgba(239,68,68,0) 55%),
+      linear-gradient(180deg,#0b1220,#020617);
+    color:#fff;
+    box-shadow: 0 28px 70px rgba(2,6,23,.70), 0 0 0 6px rgba(251,191,36,.14);
+  }
+  .hm-lib-vault-top{
+    display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+  .hm-lib-vault-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#111827;
+    border:1px solid rgba(251,191,36,.35);
+    padding:10px 12px;border-radius:999px;
+    font-weight:900;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+    color:#fde047;
+  }
+  .hm-lib-vault h3{
+    margin:10px 0 8px;
+    font-size:26px;line-height:1.1;
+    font-weight:900;letter-spacing:-.02em;
+    color:#ffffff;
+  }
+  .hm-lib-vault p{
+    margin:0 0 12px;
+    color:#e5e7eb;
+    font-size:18px;
+  }
+  .hm-value-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+    margin-top:12px;
+  }
+  .hm-value-item{
+    border-radius:16px;
+    padding:14px 14px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(148,163,184,.25);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+  }
+  .hm-value-head{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    font-weight:900;
+    color:#ffffff;
+    font-size:18px;
+  }
+  .hm-value-price{
+    background:#fde047;
+    color:#111827;
+    padding:6px 10px;
+    border-radius:999px;
+    font-weight:900;
+    font-size:14px;
+    white-space:nowrap;
+  }
+  .hm-value-sub{
+    margin-top:6px;
+    color:#cbd5e1;
+    font-size:15px;
+    line-height:1.55;
+    font-weight:700;
+  }
+  .hm-value-total{
+    margin-top:12px;
+    border-radius:16px;
+    padding:14px 14px;
+    background:linear-gradient(90deg, rgba(34,197,94,.18), rgba(251,191,36,.18));
+    border:1px solid rgba(34,197,94,.35);
+    color:#eafff0;
+    font-weight:900;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+  .hm-value-total b{ color:#ffffff; }
+  .hm-value-total .big{
+    font-size:22px;
+    background:#22c55e;
+    color:#052e16;
+    padding:8px 12px;
+    border-radius:999px;
+    font-weight:900;
+  }
+
+  /* Make library groups feel premium too */
+  #hm-library .hm-lib-tag{
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    padding:7px 10px;
+    border-radius:999px;
+    background:#f1f5f9;
+    border:1px solid #e5e7eb;
+    color:#0f172a;
+    font-weight:900;
+    letter-spacing:.12em;
+  }
+  #hm-library .hm-lib-title{ font-size:22px; }
+  #hm-library .hm-lib-items li{
+    padding:10px 10px;
+    border-radius:14px;
+    background:#f8fafc;
+    border:1px solid #e5e7eb;
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  #hm-library .hm-lib-link{ color:#0f172a; }
+  #hm-library .hm-lib-items li:hover{
+    transform:translateY(-1px);
+    box-shadow:0 14px 30px rgba(15,23,42,.08);
+  }
+
+  @media (min-width:720px){
+    .hm-value-grid{ grid-template-columns:1fr 1fr; }
+  }
+</style>
+
+<div class="hm-thx">
+
+  <!-- HEADER -->
+  <div class="hm-head">
+    <div class="hm-pill">✅ Your downloads are on this page.<br>
+Please bookmark this page so you can come back anytime.</div>
+    <h1 class="hm-title">Welcome To The 7-Minute Script</h1>
+    <p class="hm-sub">Watch this short welcome video from Sean</p>
+  </div>
+
+  <vturb-smartplayer id="vid-69384a08b1cbf1adbed1999c" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer>
+  <script type="text/javascript">
+    var s=document.createElement("script");
+    s.src="https://scripts.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/69384a08b1cbf1adbed1999c/v4/player.js";
+    s.async=!0;document.head.appendChild(s);
+  </script>
+
+  <!-- ===============================
+  HM • REFUND-KILLER PRE-FRAME (PASTE UNDER HEADER)
+  =============================== -->
+  <section class="hm-prehero" style="margin-top:14px;">
+    <div class="hm-prehero-top">
+      <div class="hm-prehero-badge">✅ Your access is confirmed <b>KEEP THIS PAGE</b></div>
+    </div>
+
+    <h2>Read this before you click anything:</h2>
+    <p>
+      If you feel "wait… what do I do now?" — that's normal.
+      Your brain is just scanning for safety.
+      This is built to be simple.
+    </p>
+
+    <div class="hm-callout" style="background:#ecfeff;border:1px solid #06b6d4;color:#155e75;">
+      <strong>Tonight's goal:</strong> feel even <strong>10% calmer</strong> after one listen.
+      Not a "life miracle." Just a real shift you can feel.
+    </div>
+
+    <ul class="hm-prehero-steps">
+      <li>
+        <div class="hm-prehero-num">1</div>
+        <div class="hm-prehero-stepText">
+          Do only Step 2 tonight
+          <span>7 minutes before sleep. That's it.</span>
+        </div>
+      </li>
+      <li>
+        <div class="hm-prehero-num">2</div>
+        <div class="hm-prehero-stepText">
+          Keep it simple for 7 nights
+          <span>Repetition is the mechanism. Not information.</span>
+        </div>
+      </li>
+      <li>
+        <div class="hm-prehero-num">3</div>
+        <div class="hm-prehero-stepText">
+          If something doesn't work, message support
+          <span>We'll fix access or point you to the right track.</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="hm-small-note" style="margin-top:12px;">
+      ⚠️ Important: don't binge the library tonight. Too many options makes the brain quit.
+    </div>
+  </section>
+
+  <!-- SECTION: TODAY – DO THIS TONIGHT (STAYS OPEN) -->
+  <section id="hm-today" class="hm-section">
+    <h2>DOWNLOAD THE 7-MINUTE SCRIPT FILES:</h2>
+    <p>If you only do these three steps tonight, you are doing it right.</p>
+
+    <ol class="hm-steps">
+      <!-- STEP 1 -->
+      <li class="hm-step">
+        <div class="hm-step-number">1</div>
+        <div class="hm-step-body">
+          <strong>Press play on your welcome message.</strong><br>
+          Listen once so you feel clear and calm before you start.
+
+          <div class="hm-audio-block">
+            <div class="hm-audio-label">🎧 Welcome From Sean</div>
+            <audio controls preload="none">
+              <source src="https://hypnoticmeditations.b-cdn.net/Products/7-Minute%20Script/1.%20Personal%20voice%20note%20from%20Sean.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="hm-small-note">Use headphones if you have them. If not, speakers are fine.</div>
+        </div>
+      </li>
+
+      <!-- STEP 2 -->
+      <li class="hm-step">
+        <div class="hm-step-number">2</div>
+        <div class="hm-step-body">
+          <strong>Listen to the 7-Minute Script before sleep.</strong><br>
+          Pick the voice you like. There is no wrong choice.
+
+          <div class="hm-audio-block">
+            <div class="hm-audio-label">🌀 7-Minute Script – Male Voice</div>
+            <audio controls preload="none">
+              <source src="https://hypnoticmeditations.b-cdn.net/Products/7-Minute%20Script/3.%20The%207%20Minute%20Script%20Audio.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="hm-audio-block">
+            <div class="hm-audio-label">🌀 7-Minute Script – Female Voice</div>
+            <audio controls preload="none">
+              <source src="https://hypnoticmeditations.b-cdn.net/Products/7-Minute%20Script/7%20Minute%20Script%20(Wealth%20Edition).mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+
+          <div class="hm-small-note">
+            Sit or lie somewhere safe and comfortable. Press play, close your eyes, and just listen.
+            Normal on Night 1: you may feel calmer, sleepy, emotional, or nothing obvious.
+            Don't judge it. Repetition is where the shift locks in.
+          </div>
+        </div>
+      </li>
+
+      <!-- STEP 3 -->
+      <li class="hm-step">
+        <div class="hm-step-number">3</div>
+        <div class="hm-step-body">
+          <strong>Open the quick guide (if you want).</strong><br>
+          This is for people who like a simple written checklist.
+
+          <div class="hm-audio-block">
+            <div class="hm-audio-label">📘 Quick Guide For Best Results (PDF)</div>
+            <a class="hm-lib-link"
+              href="https://hypnoticmeditations.b-cdn.net/Products/7-Minute%20Script/2.%20The%20Quick%20Guide%20For%20Best%20Results.pdf"
+              target="_blank" rel="noopener">
+              Open Quick Guide
+              <span class="kind">PDF</span>
+            </a>
+          </div>
+
+          <div class="hm-small-note">If reading feels like too much tonight, skip it. The script still works.</div>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- =========================
+       COMMUNITY
+  ========================= -->
+  <div class="hm-break"></div>
+  <div class="hm-break-label"><span>Community</span></div>
+
+  <div class="hm-acc hm-collapse open" data-hm-default="open" id="hm-acc-community">
+    <button class="hm-acc-btn" type="button" aria-expanded="true">
+      <div class="hm-acc-ic">👥</div>
+      <div class="hm-acc-left">
+        <div class="hm-acc-title">Your Private Community</div>
+        <div class="hm-acc-sub">Serious people only</div>
+      </div>
+      <div class="hm-acc-chevron">⌄</div>
+    </button>
+
+    <div class="hm-acc-body">
+      <section class="hm-section" style="padding-top:16px;">
+        <h2>You're Not Doing This Alone</h2>
+
+        <div class="hm-video-wrap" style="margin:14px 0;">
+          <vturb-smartplayer id="vid-69430b7de6d704f89069f716" style="display:block;margin:0 auto;width:100%;"></vturb-smartplayer>
+        </div>
+
+        <p>
+          This is a private group for people actually using the 7-Minute Script.
+          You can ask simple questions, share wins, and stay on track.
+        </p>
+
+        <ul class="hm-week-list">
+          <li>✔ Talk with Sean and other members</li>
+          <li>✔ See real wins from real people</li>
+          <li>✔ Stay consistent instead of falling off</li>
+        </ul>
+
+        <div class="hm-callout">
+          🚫 No complaining. 🚫 No drama. ✅ Short questions. Clear wins. Real progress.
+        </div>
+
+        <div style="margin-top:18px;text-align:center;">
+          <a
+            href="https://whop.com/hypnoticmeditations/7-minute-script-members/"
+            target="_blank"
+            rel="noopener"
+            class="hm-main-btn"
+          >
+            🔓 Open The Community
+          </a>
+          <div class="hm-small-note" style="margin-top:8px;">
+            Use the same email you used to buy.
+          </div>
+        </div>
+
+        <div class="hm-small-note" style="margin-top:14px;">
+          Tip: after your first listen tonight, come back and post "Day 1 done."
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- vturb player loader (safe outside accordion body) -->
+  <script type="text/javascript">
+    (function(){
+      var s=document.createElement("script");
+      s.src="https://scripts.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/69430b7de6d704f89069f716/v4/player.js";
+      s.async=true;
+      document.head.appendChild(s);
+    })();
+  </script>
+
+  <div class="hm-break"></div>
+  <div class="hm-break-label"><span>Your Bonus Library</span></div>
+
+  <!-- LIBRARY (CLOSED) -->
+  <div class="hm-acc hm-collapse" data-hm-default="open" id="hm-acc-library">
+    <button class="hm-acc-btn" type="button" aria-expanded="false">
+      <div class="hm-acc-ic">📚</div>
+      <div class="hm-acc-left">
+        <div class="hm-acc-title">Your Library – All Audios & Files</div>
+        <div class="hm-acc-sub">Tap to open</div>
+      </div>
+      <div class="hm-acc-chevron">⌄</div>
+    </button>
+    <div class="hm-acc-body">
+      <section id="hm-library" class="hm-section">
+        <h2>Your Library – All Audios & Files</h2>
+
+        <!-- RICH VAULT HEADER -->
+        <div class="hm-lib-vault">
+          <div class="hm-lib-vault-top">
+            <div class="hm-lib-vault-badge">🏛️ PRIVATE VAULT ACCESS • YOURS FOREVER</div>
+            <div class="hm-lib-vault-badge">✅ UNLOCKED IN THIS ORDER</div>
+          </div>
+
+          <h3>Your $997 Library (Already Included)</h3>
+          <p>
+            This is not "a few files."
+            This is a full vault — built so you always have the right track for the moment you're in.
+          </p>
+
+          <div class="hm-value-grid">
+            <div class="hm-value-item">
+              <div class="hm-value-head">
+                <span>🌀 7-Minute Script (2 Voices)</span>
+                <span class="hm-value-price">$297</span>
+              </div>
+              <div class="hm-value-sub">Your nightly "reset button." Simple. Repeatable. Fast.</div>
+            </div>
+
+            <div class="hm-value-item">
+              <div class="hm-value-head">
+                <span>📘 Quick-Start Guide + Checklist</span>
+                <span class="hm-value-price">$97</span>
+              </div>
+              <div class="hm-value-sub">So you never wonder "am I doing it right?"</div>
+            </div>
+
+            <div class="hm-value-item">
+              <div class="hm-value-head">
+                <span>📓 Bonus Workbook (Clarity Key)</span>
+                <span class="hm-value-price">$147</span>
+              </div>
+              <div class="hm-value-sub">Prompts that pull hidden blocks into the light.</div>
+            </div>
+
+            <div class="hm-value-item">
+              <div class="hm-value-head">
+                <span>🌿 Calm & Prep Pack</span>
+                <span class="hm-value-price">$197</span>
+              </div>
+              <div class="hm-value-sub">Use when you feel "too wired" to receive the script.</div>
+            </div>
+
+            <div class="hm-value-item">
+              <div class="hm-value-head">
+                <span>⚡ Quantum Accelerator Audio Stack</span>
+                <span class="hm-value-price">$197</span>
+              </div>
+              <div class="hm-value-sub">Use later — once the 7-minute script feels normal and easy.</div>
+            </div>
+
+            <div class="hm-value-item">
+              <div class="hm-value-head">
+                <span>🎥 Training Video Library</span>
+                <span class="hm-value-price">$62</span>
+              </div>
+              <div class="hm-value-sub">Clear explanations + advanced use (optional).</div>
+            </div>
+          </div>
+
+          <div class="hm-value-total">
+            <span>💰 Total Real-World Value: <b>$997</b></span>
+            <span class="big">PAID ✅</span>
+          </div>
+
+          <div class="hm-small-note" style="margin-top:12px;color:#cbd5e1;">
+            Pro move: don't binge. Tonight = just the 7-minute script. The vault is here when you're ready.
+          </div>
+        </div>
+
+        <p style="margin-top:14px;">
+          Here is everything you own in one place. You can always come back here later.
+        </p>
+
+        <!-- GROUP 1 -->
+        <div class="hm-lib-group">
+          <div class="hm-lib-tag">Core</div>
+          <p class="hm-lib-title">Main 7-Minute Script</p>
+          <ul class="hm-lib-items">
+            <li>🌀
+              <a class="hm-lib-link" href="https://hypnoticmeditations.b-cdn.net/Products/7-Minute%20Script/3.%20The%207%20Minute%20Script%20Audio.mp3" target="_blank" rel="noopener">
+                7-Minute Script – Male Voice
+              </a><span class="kind">MP3</span>
+            </li>
+            <li>🌀
+              <a class="hm-lib-link" href="https://hypnoticmeditations.b-cdn.net/Products/7-Minute%20Script/7%20Minute%20Script%20(Wealth%20Edition).mp3" target="_blank" rel="noopener">
+                7-Minute Script – Female Voice
+              </a><span class="kind">MP3</span>
+            </li>
+            <li>📘
+              <a class="hm-lib-link" href="https://hypnoticmeditations.b-cdn.net/Products/7-Minute%20Script/2.%20The%20Quick%20Guide%20For%20Best%20Results.pdf" target="_blank" rel="noopener">
+                Quick Guide For Best Results
+              </a><span class="kind">PDF</span>
+            </li>
+            <li>📓
+              <a class="hm-lib-link" href="https://hypnoticmeditations.b-cdn.net/Products/7-Minute%20Script/The_Clarity_Key_Soul_Yearning_Edition.pdf" target="_blank" rel="noopener">
+                Bonus Workbook
+              </a><span class="kind">PDF</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- GROUP 2 -->
+        <div class="hm-lib-group">
+          <div class="hm-lib-tag">Calm & Prep (Optional)</div>
+          <p class="hm-lib-title">Calm Your System First</p>
+          <ul class="hm-lib-items">
+            <li>🎧
+              <a class="hm-lib-link" href="https://hypnoticmeditations.b-cdn.net/Products/7-Minute%20Script/4.%20Quantum%20Relaxation%20Frequency.mp3" target="_blank" rel="noopener">
+                Quantum Relaxation Frequency
+              </a><span class="kind">MP3</span>
+            </li>
+            <li>💰
+              <a class="hm-lib-link" href="https://hypnoticmeditations.b-cdn.net/Products/7-Minute%20Script/5.%20The%20Full%20Bonus%20Meditation.mp3" target="_blank" rel="noopener">
+                Quantum Cash Meditation
+              </a><span class="kind">MP3</span>
+            </li>
+            <li>📜
+              <a class="hm-lib-link" href="https://myworkspace3345a.myclickfunnels.com/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNTh0SXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--9b5c103f9bb1c6622d2becb16cc4fba2f1d112b4/HM_Ritual_Guide_v2.pdf" target="_blank" rel="noopener">
+                Ritual Guide: 3-Step Prep
+              </a><span class="kind">PDF</span>
+            </li>
+            <li>🎥
+              <a class="hm-lib-link" href="https://www.loom.com/share/ab81a296163f4bc199c2d7acdea27ac8" target="_blank" rel="noopener">
+                Tutorial: How To Use The 7-Minute Script
+              </a><span class="kind">Video</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- GROUP 3 -->
+        <div class="hm-lib-group">
+          <div class="hm-lib-tag">Quantum Overdrive (Use Later)</div>
+          <p class="hm-lib-title">Quantum Manifestation Accelerator</p>
+          <ul class="hm-lib-items">
+            <li>⚡ <a class="hm-lib-link" href="https://hypnoticmeditations.b-cdn.net/Products/Quantum%20Manifestation%20Accelerator/Audios/The%20Rapid%20Recode%20Meditation.mp3" target="_blank" rel="noopener">Rapid Recode Meditation</a> <span class="kind">MP3</span></li>
+            <li>🌅 <a class="hm-lib-link" href="https://hypnoticmeditations.b-cdn.net/Products/Quantum%20Manifestation%20Accelerator/Bonuses/Morning-Activation-Routine-7-Day-Challenge-to-Shift-into-Wealth-Mode.pdf" target="_blank" rel="noopener">Morning Activation Routine (7-Day)</a> <span class="kind">PDF</span></li>
+            <li>✨ <a class="hm-lib-link" href="https://hypnoticmeditations.b-cdn.net/Products/Quantum%20Manifestation%20Accelerator/Audios/Miracle%20Frequency%20V2.mp3" target="_blank" rel="noopener">Miracle Frequency V2</a> <span class="kind">MP3</span></li>
+            <li>💎 <a class="hm-lib-link" href="https://hypnoticmeditations.b-cdn.net/Products/Quantum%20Manifestation%20Accelerator/Audios/Money%20Magnet%20Hypnosis%201.mp3" target="_blank" rel="noopener">Money Magnet Hypnosis 1</a> <span class="kind">MP3</span></li>
+            <li>💸 <a class="hm-lib-link" href="https://hypnoticmeditations.b-cdn.net/Products/Quantum%20Manifestation%20Accelerator/Audios/Money%20Magnet%20Hypnosis%202.mp3" target="_blank" rel="noopener">Money Magnet Hypnosis 2</a> <span class="kind">MP3</span></li>
+            <li>🏦 <a class="hm-lib-link" href="https://hypnoticmeditations.b-cdn.net/Products/Quantum%20Manifestation%20Accelerator/Audios/Money%20Magnet%20Hypnosis%203.mp3" target="_blank" rel="noopener">Money Magnet Hypnosis 3</a> <span class="kind">MP3</span></li>
+          </ul>
+          <div class="hm-callout">📌 Use these only when the main 7-Minute Script feels normal and easy. We want calm progress, not a long to-do list.</div>
+        </div>
+
+        <!-- GROUP 4 -->
+        <div class="hm-lib-group">
+          <div class="hm-lib-tag">Learn More (Optional)</div>
+          <p class="hm-lib-title">Training Video Library</p>
+          <p class="hm-small-note">These videos explain how the system works. The audios still work even if you never watch these.</p>
+
+          <p style="font-size:18px;font-weight:700;margin:12px 0 6px;">Video 1 – Introduction</p>
+          <div id="vid_67ae2d0ef696257ba4d18238" style="position:relative;width:100%;padding:56.25% 0 0;margin-bottom:14px;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;">
+            <img id="thumb_67ae2d0ef696257ba4d18238" src="https://images.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/67ae2d0ef696257ba4d18238/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;" alt="thumbnail">
+            <div id="backdrop_67ae2d0ef696257ba4d18238" style="-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);position:absolute;top:0;height:100%;width:100%;"></div>
+          </div>
+
+          <p style="font-size:18px;font-weight:700;margin:12px 0 6px;">Video 2 – How the System Works</p>
+          <div id="vid_67ae2be08446aec6e287114c" style="position:relative;width:100%;padding:56.25% 0 0;margin-bottom:14px;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;">
+            <img id="thumb_67ae2be08446aec6e287114c" src="https://images.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/67ae2be08446aec6e287114c/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;" alt="thumbnail">
+            <div id="backdrop_67ae2be08446aec6e287114c" style="-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);position:absolute;top:0;height:100%;width:100%;"></div>
+          </div>
+
+          <p style="font-size:18px;font-weight:700;margin:12px 0 6px;">Video 3 – Advanced Techniques</p>
+          <div id="vid_67ae2b3d14bf1ad5ddcca158" style="position:relative;width:100%;padding:56.25% 0 0;margin-bottom:14px;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;">
+            <img id="thumb_67ae2b3d14bf1ad5ddcca158" src="https://images.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/67ae2b3d14bf1ad5ddcca158/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;" alt="thumbnail">
+            <div id="backdrop_67ae2b3d14bf1ad5ddcca158" style="-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);position:absolute;top:0;height:100%;width:100%;"></div>
+          </div>
+
+          <p style="font-size:18px;font-weight:700;margin:12px 0 6px;">Video 4 – Masterclass Bonus</p>
+          <div id="vid_67ae4ab3f02cf70af251bb6c" style="position:relative;width:100%;padding:56.25% 0 0;margin-bottom:10px;border-radius:14px;overflow:hidden;border:1px solid #e5e7eb;">
+            <img id="thumb_67ae4ab3f02cf70af251bb6c" src="https://images.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/67ae4ab3f02cf70af251bb6c/thumbnail.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;" alt="thumbnail">
+            <div id="backdrop_67ae4ab3f02cf70af251bb6c" style="-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);position:absolute;top:0;height:100%;width:100%;"></div>
+          </div>
+
+          <p class="hm-small-note">Best watched on a quiet afternoon or weekend. Nights are for the 7-Minute Script itself.</p>
+        </div>
+      </section>
+
+      <!-- CONVERTEAI PLAYER SCRIPTS (kept even if section is closed) -->
+      <script type="text/javascript">
+        (function(){
+          var s1=document.createElement("script");
+          s1.src="https://scripts.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/67ae2d0ef696257ba4d18238/player.js";
+          s1.async=true;document.head.appendChild(s1);
+
+          var s2=document.createElement("script");
+          s2.src="https://scripts.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/67ae2be08446aec6e287114c/player.js";
+          s2.async=true;document.head.appendChild(s2);
+
+          var s3=document.createElement("script");
+          s3.src="https://scripts.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/67ae2b3d14bf1ad5ddcca158/player.js";
+          s3.async=true;document.head.appendChild(s3);
+
+          var s4=document.createElement("script");
+          s4.src="https://scripts.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/67ae4ab3f02cf70af251bb6c/player.js";
+          s4.async=true;document.head.appendChild(s4);
+        })();
+      </script>
+    </div>
+  </div>
+
+  <div class="hm-break"></div>
+  <div class="hm-break-label"><span>How It Works</span></div>
+
+  <!-- HOW IT WORKS (CLOSED) -->
+  <div class="hm-acc hm-collapse" data-hm-default="closed" id="hm-acc-how">
+    <button class="hm-acc-btn" type="button" aria-expanded="false">
+      <div class="hm-acc-ic">🧠</div>
+      <div class="hm-acc-left">
+        <div class="hm-acc-title">How This Program Works (Super Simple)</div>
+        <div class="hm-acc-sub">Tap to open</div>
+      </div>
+      <div class="hm-acc-chevron">⌄</div>
+    </button>
+    <div class="hm-acc-body">
+      <section class="hm-section">
+        <h2>How This Program Works (Super Simple)</h2>
+        <p>You are not trying to be perfect. You are just training your brain to feel safe and open around money.</p>
+        <ul class="hm-week-list">
+          <li><strong>1. Night:</strong> Listen to the 7-Minute Script before sleep most nights.</li>
+          <li><strong>2. Week:</strong> Notice small changes in how you feel, think, and react.</li>
+          <li><strong>3. Boost:</strong> When it feels normal and easy, add the Quantum audios and videos if you want more.</li>
+        </ul>
+        <div class="hm-callout">🧠 You do not have to listen to everything every day. Small, steady use is stronger than pushing hard.</div>
+      </section>
+    </div>
+  </div>
+
+  <div class="hm-break"></div>
+  <div class="hm-break-label"><span>Real Questions</span></div>
+
+  <!-- FAQ (CLOSED) -->
+  <div class="hm-acc hm-collapse" data-hm-default="closed" id="hm-acc-faq">
+    <button class="hm-acc-btn" type="button" aria-expanded="false">
+      <div class="hm-acc-ic">❓</div>
+      <div class="hm-acc-left">
+        <div class="hm-acc-title">FAQ — Straight Answers, No Hype</div>
+        <div class="hm-acc-sub">Tap to open</div>
+      </div>
+      <div class="hm-acc-chevron">⌄</div>
+    </button>
+    <div class="hm-acc-body">
+      <section class="hm-section" id="hm-faq">
+        <h2>FAQ — Straight Answers, No Hype</h2>
+        <p>This isn't magic. It's a mental training tool. Below are honest answers to the questions we get the most.</p>
+
+        <details style="margin-top:16px;">
+          <summary style="font-weight:900;font-size:18px;cursor:pointer;">How long do I need to use this to notice real effects?</summary>
+          <p style="margin-top:10px;">Here's the truth:</p>
+          <p>You are an adult with years — maybe decades — of mental conditioning. That does not unwind in a few days.</p>
+          <p>Most people notice <strong>small shifts</strong> first: calmer nights, less mental noise, fewer stress spikes. That can happen within the first 1–2 weeks.</p>
+          <p><strong>Real, life-level change</strong> takes consistency. We recommend giving this a <strong>minimum of 30 days</strong>. For deeper results, <strong>30–90 days</strong> is realistic.</p>
+          <p>This is not about forcing belief. It's about repetition training your nervous system into a new baseline.</p>
+        </details>
+
+        <details style="margin-top:16px;">
+          <summary style="font-weight:900;font-size:18px;cursor:pointer;">Will my life change overnight if I listen once?</summary>
+          <p style="margin-top:10px;">No — and anyone promising that is not being honest with you.</p>
+          <p>One listen can calm you. Repeated listens are what create change.</p>
+          <p>Think of this like physical training. One workout feels good. A month of workouts changes your body.</p>
+          <p>Same idea. Different system.</p>
+        </details>
+
+        <details style="margin-top:16px;">
+          <summary style="font-weight:900;font-size:18px;cursor:pointer;">How often should I use it?</summary>
+          <p style="margin-top:10px;">Once per day is enough for most people.</p>
+          <p>Best time: <strong>before sleep</strong>, when the mind is most receptive.</p>
+          <p>If you want to go deeper, you can listen twice a day — but consistency matters more than intensity.</p>
+        </details>
+
+        <details style="margin-top:16px;">
+          <summary style="font-weight:900;font-size:18px;cursor:pointer;">What if I feel like it's not working for me?</summary>
+          <p style="margin-top:10px;">Let's define what "not working" actually means.</p>
+          <p>Did you use it consistently for <strong>30–90 days</strong>? Did you actually listen — not just play it in the background? Did you give your mind time to adapt?</p>
+          <p>If you genuinely did all of that and noticed <strong>no change at all</strong> — not in stress, clarity, reactions, or emotional state — then reach out to support.</p>
+          <p>We'll help you switch to a different product in the library that may fit your nervous system better.</p>
+          <p>The goal is progress — not blind faith.</p>
+        </details>
+
+        <details style="margin-top:16px;">
+          <summary style="font-weight:900;font-size:18px;cursor:pointer;">Is this scientific or just mindset talk?</summary>
+          <p style="margin-top:10px;">This is applied mind science.</p>
+          <p>The method uses repetition, relaxation, and suggestion — the same core mechanics used in clinical hypnosis and nervous-system regulation work.</p>
+          <p>No beliefs required. Just usage.</p>
+        </details>
+
+        <div class="hm-callout" style="margin-top:22px;">
+          🧠 Bottom line: this works the same way real change always works — calm repetition over time.
+          Give it an honest shot and let your system adjust.
+        </div>
+      </section>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  function toggleAcc(acc){
+    var isOpen = acc.classList.contains('open');
+    var btn = acc.querySelector('.hm-acc-btn');
+    if(isOpen){
+      acc.classList.remove('open');
+      btn && btn.setAttribute('aria-expanded','false');
+    } else {
+      acc.classList.add('open');
+      btn && btn.setAttribute('aria-expanded','true');
+    }
+  }
+
+  function closeAllDetails(root){
+    if(!root) return;
+    root.querySelectorAll('details').forEach(function(x){ x.open = false; });
+  }
+
+  function init(){
+    document.querySelectorAll('.hm-acc').forEach(function(acc){
+      var def = (acc.getAttribute('data-hm-default') || 'closed').toLowerCase();
+      var btn = acc.querySelector('.hm-acc-btn');
+
+      if(def === 'open'){
+        acc.classList.add('open');
+        btn && btn.setAttribute('aria-expanded','true');
+      } else {
+        acc.classList.remove('open');
+        btn && btn.setAttribute('aria-expanded','false');
+      }
+
+      if(btn && !btn.__hmBound){
+        btn.__hmBound = true;
+        btn.addEventListener('click', function(){ toggleAcc(acc); });
+      }
+    });
+
+    // enforce FAQ details closed on load
+    closeAllDetails(document.getElementById('hm-faq'));
+  }
+
+  // run now + later (CF2-safe)
+  init();
+  document.addEventListener('DOMContentLoaded', init);
+  window.addEventListener('load', init);
+})();
+</script>
+
+<!-- ===============================
+ONLINE INCOME APPLICATION • CLICK-TO-OPEN DROPDOWN (STARTS CLOSED)
+✅ POP UPGRADE (glow, badge, pulse, better hierarchy)
+✅ No external libs
+✅ Safe single-paste
+✅ + Added 21-Day Reset promo section (separate, below)
+=============================== -->
+
+<section id="ai-training-offer" style="font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#ffffff;color:#0f172a;padding:22px 16px;">
+  <div style="max-width:820px;margin:0 auto;">
+
+    <!-- TOP DIVIDER -->
+    <div style="width:100%; height:1px; background-color:#e2e8f0; margin:8px 0 16px;"></div>
+
+    <!-- LOCAL STYLES (CF SAFE) -->
+    <style>
+      #ai-training-offer *{ box-sizing:border-box; }
+      #ai-training-offer a{ -webkit-tap-highlight-color: transparent; }
+      @keyframes aiPulse {
+        0% { transform: translateY(0); box-shadow: 0 18px 44px rgba(15,23,42,.10), 0 0 0 rgba(99,102,241,.00); }
+        50%{ transform: translateY(-1px); box-shadow: 0 22px 56px rgba(15,23,42,.14), 0 0 0 rgba(99,102,241,.00); }
+        100%{ transform: translateY(0); box-shadow: 0 18px 44px rgba(15,23,42,.10), 0 0 0 rgba(99,102,241,.00); }
+      }
+      @keyframes softGlow {
+        0%{ opacity:.55; transform: scale(1); }
+        50%{ opacity:.85; transform: scale(1.03); }
+        100%{ opacity:.55; transform: scale(1); }
+      }
+    </style>
+
+    <!-- CLICK HEADER (TOGGLES) -->
+    <button id="ai-offer-toggle" type="button" aria-expanded="false"
+      style="
+        width:100%;
+        position:relative;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:14px;
+        padding:18px 18px;
+        border-radius:22px;
+        border:2px solid rgba(99,102,241,.25);
+        background:
+          radial-gradient(900px 180px at 20% 0%, rgba(99,102,241,.20), rgba(255,255,255,0) 55%),
+          radial-gradient(700px 180px at 80% 0%, rgba(16,185,129,.14), rgba(255,255,255,0) 60%),
+          linear-gradient(180deg,#ffffff,#f8fafc);
+        cursor:pointer;
+        text-align:left;
+        box-shadow:0 18px 44px rgba(15,23,42,.10);
+        animation:aiPulse 3.6s ease-in-out infinite;
+        overflow:hidden;
+      ">
+
+      <!-- subtle glow blob -->
+      <span aria-hidden="true"
+        style="
+          position:absolute; inset:-40px -60px auto auto;
+          width:240px; height:240px; border-radius:999px;
+          background:radial-gradient(circle at 30% 30%, rgba(99,102,241,.24), rgba(99,102,241,0) 60%);
+          filter:blur(10px);
+          animation:softGlow 4.2s ease-in-out infinite;
+          pointer-events:none;
+        "></span>
+
+      <span style="display:flex;flex-direction:column;gap:8px;position:relative;z-index:1;">
+
+        <!-- badge row -->
+        <span style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <span style="
+            display:inline-flex;align-items:center;gap:8px;
+            padding:6px 10px;border-radius:999px;
+            background:#0f172a;color:#fff;
+            font-size:12px;font-weight:900;letter-spacing:.5px;
+          ">
+            ⚡ LIMITED WINDOW
+          </span>
+
+          <span style="
+            display:inline-flex;align-items:center;gap:8px;
+            padding:6px 10px;border-radius:999px;
+            background:#ecfdf5;color:#065f46;
+            border:1px solid #bbf7d0;
+            font-size:12px;font-weight:900;
+          ">
+            ✅ APPLICATION (2–3 MIN)
+          </span>
+        </span>
+
+        <span style="font-size:24px;line-height:1.15;font-weight:950;letter-spacing:-.2px;">
+          Want a Real Online Income Stream?
+        </span>
+
+        <span style="color:#475569;font-size:14px;font-weight:800;line-height:1.35;">
+          Tap to see if you qualify • No hype • One clear system
+        </span>
+
+        <!-- micro proof strip -->
+        <span style="
+          margin-top:2px;
+          display:flex;gap:10px;flex-wrap:wrap;
+          color:#64748b;font-size:12px;font-weight:800;
+        ">
+          <span style="display:inline-flex;align-items:center;gap:6px;">
+            <span style="width:8px;height:8px;border-radius:999px;background:#22c55e;"></span>
+            Built for beginners
+          </span>
+          <span style="display:inline-flex;align-items:center;gap:6px;">
+            <span style="width:8px;height:8px;border-radius:999px;background:#6366f1;"></span>
+            AI-assisted system
+          </span>
+          <span style="display:inline-flex;align-items:center;gap:6px;">
+            <span style="width:8px;height:8px;border-radius:999px;background:#f59e0b;"></span>
+            30–60 day proof window
+          </span>
+        </span>
+      </span>
+
+      <span id="ai-offer-chevron"
+        style="
+          width:40px;height:40px;border-radius:999px;
+          display:flex;align-items:center;justify-content:center;
+          background:linear-gradient(180deg,#eef2ff,#e0e7ff);
+          color:#3730a3;
+          font-weight:950;
+          border:1px solid rgba(99,102,241,.35);
+          transition:transform .18s ease, box-shadow .18s ease;
+          box-shadow:0 10px 20px rgba(55,48,163,.12);
+          flex:0 0 auto;
+          position:relative;z-index:1;
+        ">⌄</span>
+    </button>
+
+    <!-- COLLAPSIBLE BODY (STARTS CLOSED) -->
+    <div id="ai-offer-body" style="display:none; padding:16px 10px 2px;">
+      <div style="
+        border:1px solid #e2e8f0;
+        border-radius:22px;
+        background:
+          radial-gradient(700px 240px at 10% 0%, rgba(99,102,241,.08), rgba(255,255,255,0) 55%),
+          linear-gradient(180deg,#ffffff,#fbfdff);
+        padding:18px 14px;
+        box-shadow:0 14px 34px rgba(15,23,42,.06);
+      ">
+
+        <div style="text-align:center;">
+          <p style="margin:0 auto 14px;max-width:740px;color:#334155;font-size:18px;line-height:1.55;font-weight:700;">
+            This is not a course page. It’s an <strong>application</strong> for people who want a legitimate online income system —
+            not hype, not guessing, not another dead end.
+          </p>
+
+          <p style="margin:0 auto 16px;max-width:740px;color:#475569;font-size:18px;line-height:1.55;">
+            We’re opening limited access for individuals who want to build a <strong>simple, AI-assisted income stream</strong>
+            that can reach <strong>$1K/month+</strong> once installed and running.
+          </p>
+        </div>
+
+        <!-- feature grid -->
+        <div style="
+          display:grid;
+          grid-template-columns:1fr;
+          gap:12px;
+          margin:18px auto 14px;
+          max-width:720px;
+          text-align:left;
+        ">
+
+          <div style="
+            display:flex;gap:12px;align-items:flex-start;
+            padding:14px 14px;border-radius:18px;
+            border:1px solid #e2e8f0;background:#ffffff;
+          ">
+            <div style="
+              width:42px;height:42px;border-radius:14px;
+              display:flex;align-items:center;justify-content:center;
+              background:#fff7ed;border:1px solid #fed7aa;
+              font-size:22px;flex:0 0 auto;
+            ">🧩</div>
+            <div>
+              <div style="font-size:16px;font-weight:950;letter-spacing:-.1px;">A System — Not a Side Hustle</div>
+              <div style="margin-top:4px;color:#64748b;font-size:14px;font-weight:700;line-height:1.4;">
+                You install it once. Then you optimize, not grind.
+              </div>
+            </div>
+          </div>
+
+          <div style="
+            display:flex;gap:12px;align-items:flex-start;
+            padding:14px 14px;border-radius:18px;
+            border:1px solid #e2e8f0;background:#ffffff;
+          ">
+            <div style="
+              width:42px;height:42px;border-radius:14px;
+              display:flex;align-items:center;justify-content:center;
+              background:#eef2ff;border:1px solid #c7d2fe;
+              font-size:22px;flex:0 0 auto;
+            ">🧠</div>
+            <div>
+              <div style="font-size:16px;font-weight:950;letter-spacing:-.1px;">No Experience Required</div>
+              <div style="margin-top:4px;color:#64748b;font-size:14px;font-weight:700;line-height:1.4;">
+                Designed for normal people, not tech experts.
+              </div>
+            </div>
+          </div>
+
+          <div style="
+            display:flex;gap:12px;align-items:flex-start;
+            padding:14px 14px;border-radius:18px;
+            border:1px solid #e2e8f0;background:#ffffff;
+          ">
+            <div style="
+              width:42px;height:42px;border-radius:14px;
+              display:flex;align-items:center;justify-content:center;
+              background:#ecfdf5;border:1px solid #bbf7d0;
+              font-size:22px;flex:0 0 auto;
+            ">🔒</div>
+            <div>
+              <div style="font-size:16px;font-weight:950;letter-spacing:-.1px;">Application-Based Access</div>
+              <div style="margin-top:4px;color:#64748b;font-size:14px;font-weight:700;line-height:1.4;">
+                We only accept people who are a fit.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CTA block -->
+        <div style="text-align:center;padding:6px 6px 10px;">
+          <div style="margin:6px auto 10px;max-width:740px;color:#0f172a;font-size:18px;font-weight:950;">
+            If you’re serious, apply below.
+          </div>
+
+          <a href="https://keatcmhqdrm.typeform.com/to/kOoYpv94" target="_blank" rel="noopener"
+            style="
+              display:inline-block;width:100%;max-width:560px;
+              background:linear-gradient(180deg,#0f172a,#0b1220);
+              color:#ffffff;font-weight:950;
+              padding:20px 26px;border-radius:18px;
+              text-decoration:none;font-size:22px;letter-spacing:.2px;
+              box-shadow:0 16px 36px rgba(15,23,42,.28);
+              border:1px solid rgba(148,163,184,.25);
+            ">
+            Apply for Access →
+          </a>
+
+          <div style="color:#94a3b8;font-size:13px;margin-top:8px;font-weight:800;">
+            Takes 2–3 minutes • No obligation
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    (function(){
+      var btn = document.getElementById('ai-offer-toggle');
+      var body = document.getElementById('ai-offer-body');
+      var chev = document.getElementById('ai-offer-chevron');
+      if(!btn || !body || btn.__aiBound) return;
+      btn.__aiBound = true;
+
+      function setOpen(open){
+        if(open){
+          body.style.display = 'block';
+          btn.setAttribute('aria-expanded','true');
+          chev.style.transform = 'rotate(180deg)';
+          chev.style.boxShadow = '0 14px 28px rgba(55,48,163,.18)';
+        } else {
+          body.style.display = 'none';
+          btn.setAttribute('aria-expanded','false');
+          chev.style.transform = 'rotate(0deg)';
+          chev.style.boxShadow = '0 10px 20px rgba(55,48,163,.12)';
+        }
+      }
+
+      // start CLOSED
+      setOpen(false);
+
+      btn.addEventListener('click', function(){
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        setOpen(!isOpen);
+      });
+    })();
+  </script>
+</section>

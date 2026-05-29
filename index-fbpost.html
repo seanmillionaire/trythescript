@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sean Ali - 7-Minute Manifestation Script</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: auto;
+            min-height: 0;
+            background: #f3f4f6;
+            font-family: 'DM Sans', system-ui, sans-serif;
+            color: #1f2937;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Sora', system-ui, sans-serif;
+            font-weight: 800;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes vslPulse {
+            0%, 100% {
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 0 0 rgba(255, 107, 53, 0.4);
+            }
+            50% {
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 0 12px rgba(255, 107, 53, 0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Container */
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 32px 16px;
+        }
+
+        /* Facebook Post Card */
+        .facebook-post {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .facebook-post:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Post Header */
+        .post-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .author-info h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #111827;
+            margin: 0;
+        }
+
+        .author-info p {
+            font-size: 12px;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .post-menu {
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            color: #6b7280;
+            font-size: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .post-menu:hover {
+            background-color: #f3f4f6;
+            border-radius: 50%;
+        }
+
+        /* Post Caption */
+        .post-caption {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .post-caption p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .post-caption p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Video Container */
+        .vsl-video-container {
+            position: relative;
+            background: black;
+            min-height: 600px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 0 0 rgba(255, 107, 53, 0.4);
+            animation: vslPulse 3s ease-in-out infinite;
+        }
+
+        .vsl-video-container vturb-smartplayer {
+            width: 100% !important;
+            max-width: 100% !important;
+            display: block !important;
+            margin: 0 auto !important;
+        }
+
+        .vsl-video-container vturb-smartplayer iframe {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        .video-duration {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        /* Engagement Metrics */
+        .engagement-metrics {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 16px;
+            border-top: 1px solid #f3f4f6;
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .metric-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .metric-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .metric-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+        }
+
+        .metric-count {
+            font-weight: 600;
+            color: #374151;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            padding: 8px 16px;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .action-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            color: #6b7280;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .action-btn:hover {
+            background-color: #f3f4f6;
+        }
+
+        .action-btn.liked {
+            color: #2563eb;
+            background-color: #eff6ff;
+        }
+
+        /* Comments Section */
+        .comments-section {
+            padding: 16px;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .comments-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #6b7280;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .comments-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .comment {
+            display: flex;
+            gap: 12px;
+        }
+
+        .comment-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .comment-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .comment-bubble {
+            background: #f3f4f6;
+            padding: 10px 12px;
+            border-radius: 12px;
+            margin-bottom: 4px;
+        }
+
+        .comment-author {
+            font-size: 13px;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 2px;
+        }
+
+        .comment-text {
+            font-size: 13px;
+            color: #374151;
+            line-height: 1.4;
+        }
+
+        .comment-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 11px;
+            color: #6b7280;
+        }
+
+        .comment-action {
+            cursor: pointer;
+            transition: color 0.2s;
+            font-weight: 500;
+        }
+
+        .comment-action:hover {
+            color: #2563eb;
+        }
+
+        .comment-reactions {
+            margin-left: auto;
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* Comment Input */
+        .comment-input-wrapper {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            align-items: flex-start;
+        }
+
+        .comment-input-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .comment-input-field {
+            flex: 1;
+            background: #f3f4f6;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 16px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            resize: none;
+            outline: none;
+            transition: background 0.2s;
+        }
+
+        .comment-input-field:focus {
+            background: #e5e7eb;
+        }
+
+        .comment-post-btn {
+            background: #2563eb;
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .comment-post-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .utility-icon {
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '878451855254470');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=878451855254470&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<script id="hotmart_launcher_script">
+    (function(l,a,u,n,c,h,e,r){l['HotmartLauncherObject']=c;l[c]=l[c]||function(){
+    (l[c].q=l[c].q||[]).push(arguments)},l[c].l=1*new Date();h=a.createElement(u),
+    e=a.getElementsByTagName(u)[0];h.async=1;h.src=n;e.parentNode.insertBefore(h,e)
+    })(window,document,'script','//launcher.hotmart.com/launcher.js','hot');
+
+    hot('account','3a3058a6-7369-3d97-a1a0-ba9baed71541');
+</script>
+<body>
+    <div class="container">
+        <!-- Main Facebook Post -->
+        <div class="facebook-post fade-in-up">
+            <!-- Post Header -->
+            <div class="post-header">
+                <div class="post-author">
+                    <div class="author-avatar">SA</div>
+                    <div class="author-info">
+                        <h4>Sean Ali</h4>
+                        <p>2 hours ago • 🌍</p>
+                    </div>
+                </div>
+                <button class="post-menu">⋯</button>
+            </div>
+
+            <!-- Post Caption -->
+            <div class="post-caption">
+                <p>🧠 "7 minutes before sleep... changes everything"</p>
+                <p>Most people are still asleep to their financial reality. They wake up broke because their brain is running an old program.</p>
+              
+                <p>Watch until the end to see how to get the script and start using it tonight. 👇</p>
+            </div>
+
+            <!-- Video Container -->
+            <div class="vsl-video-container">
+                <vturb-smartplayer id="vid-6966599cbabb3c836813c52f" style="display: block; margin: 0 auto; width: 100%; height: auto;"></vturb-smartplayer>
+                <div class="video-duration">7:45</div>
+            </div>
+
+            <!-- Engagement Metrics (dynamic) -->
+            <div class="engagement-metrics">
+                <div class="metric-group">
+                    <div class="metric-item">
+                        <div class="metric-icon">👍</div>
+                        <span class="metric-count" id="likeCountDisplay">2847</span>
+                    </div>
+                    <span id="commentCountDisplay">3 comments</span>
+                    <span id="shareCountDisplay">847 shares</span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="action-btn" id="likeBtn">
+                    <span>❤️</span>
+                    <span>Like</span>
+                </button>
+                <button class="action-btn" id="commentNavBtn">
+                    <span>💬</span>
+                    <span>Comment</span>
+                </button>
+                <button class="action-btn" id="shareBtn">
+                    <span>↗️</span>
+                    <span>Share</span>
+                </button>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="comments-section">
+                <div class="comments-title">Comments</div>
+                <div class="comments-container" id="commentsContainer"></div>
+                <!-- Live comment input -->
+                <div class="comment-input-wrapper">
+                    <div class="comment-input-avatar">YO</div>
+                    <input type="text" class="comment-input-field" id="commentInput" placeholder="Write a comment..." autocomplete="off">
+                    <button class="comment-post-btn" id="postCommentBtn">Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vturb Player Script -->
+    <script type="text/javascript">
+        var s = document.createElement("script");
+        s.src = "https://scripts.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/6966599cbabb3c836813c52f/v4/player.js";
+        s.async = true;
+        document.head.appendChild(s);
+    </script>
+
+    <!-- Enhanced Real-Time Comments & Engagement Script -->
+    <script>
+        // ---------- STATE ----------
+        let likes = 2847;
+        let shares = 847;
+        let userLiked = false;
+
+        // Comments array (initial realistic comments)
+        let comments = [
+            {
+                id: 'c1',
+                author: 'Nova M.',
+                avatar: 'NM',
+                text: 'First time I listened, it clicked. That week I finally asked for the raise I\'d been avoiding. 🙌',
+                reactions: 156,
+                timestamp: '2h',
+                color: 'linear-gradient(135deg, #a78bfa 0%, #ec4899 100%)'
+            },
+            {
+                id: 'c2',
+                author: 'Jerome S.',
+                avatar: 'JS',
+                text: 'I thought it was all bullshit. But after listening once, two new clients showed up within days.',
+                reactions: 234,
+                timestamp: '4h',
+                color: 'linear-gradient(135deg, #60a5fa 0%, #06b6d4 100%)'
+            },
+            {
+                id: 'c3',
+                author: 'Nina T.',
+                avatar: 'NT',
+                text: 'The audio made me feel confident, deserving, like I was finally seen. Changed my entire week. ❤️',
+                reactions: 189,
+                timestamp: '6h',
+                color: 'linear-gradient(135deg, #f472b6 0%, #fb7185 100%)'
+            }
+        ];
+
+        // Auto-comment pool (realistic viral style)
+        const namePool = [
+            'Alex M.', 'Jordan W.', 'Casey L.', 'Riley T.', 'Morgan P.', 'Cameron S.', 'Jamie R.', 'Dakota F.', 'Quinn H.', 'Blake C.'
+        ];
+        const messagePool = [
+            '🔥🔥 This is exactly what I needed tonight!',
+            'Just listened — my mind already feels lighter. Thank you Sean!',
+            'Can confirm. Got a random refund check two days after listening.',
+            'Has anyone else felt weird dreams after? In a good way though!',
+            'Shared with my sister. We’re doing this together tonight 🙏',
+            'The subconscious reprogramming is real. Game changer.',
+            'Okay but why did I wake up feeling so motivated?!',
+            'Love how simple this is. No fluff, just results.',
+            'I’ve tried everything — this actually works.',
+            '7 minutes that change your money story. Brilliant.'
+        ];
+        
+        let autoInterval = null;
+
+        // Helper: generate random comment
+        function generateRandomComment() {
+            const randomName = namePool[Math.floor(Math.random() * namePool.length)];
+            const randomMsg = messagePool[Math.floor(Math.random() * messagePool.length)];
+            const initials = randomName.split(' ').map(n => n[0]).join('');
+            const hue = Math.floor(Math.random() * 360);
+            const gradientColor = `linear-gradient(135deg, hsl(${hue}, 70%, 60%), hsl(${hue + 30}, 75%, 45%))`;
+            return {
+                id: Date.now() + '-' + Math.random().toString(36).substr(2, 6),
+                author: randomName,
+                avatar: initials,
+                text: randomMsg,
+                reactions: Math.floor(Math.random() * 45) + 5, // 5-50 likes
+                timestamp: 'Just now',
+                color: gradientColor
+            };
+        }
+
+        // Update UI: like count, share count, comment count
+        function updateMetrics() {
+            document.getElementById('likeCountDisplay').innerText = likes.toLocaleString();
+            document.getElementById('shareCountDisplay').innerText = shares + ' shares';
+            const commentCount = comments.length;
+            const commentText = commentCount === 1 ? '1 comment' : `${commentCount} comments`;
+            document.getElementById('commentCountDisplay').innerText = commentText;
+        }
+
+        // Render all comments dynamically
+        function renderComments() {
+            const container = document.getElementById('commentsContainer');
+            if (!container) return;
+            container.innerHTML = '';
+            // Show newest first (reverse order so latest appear on top)
+            const sorted = [...comments].reverse();
+            sorted.forEach(comment => {
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment';
+                commentDiv.setAttribute('data-id', comment.id);
+                commentDiv.innerHTML = `
+                    <div class="comment-avatar" style="background: ${comment.color};">${comment.avatar}</div>
+                    <div class="comment-content">
+                        <div class="comment-bubble">
+                            <div class="comment-author">${escapeHtml(comment.author)}</div>
+                            <div class="comment-text">${escapeHtml(comment.text)}</div>
+                        </div>
+                        <div class="comment-actions">
+                            <span class="comment-action like-comment" data-id="${comment.id}">Like</span>
+                            <span class="comment-action reply-comment" data-id="${comment.id}">Reply</span>
+                            <span>${comment.timestamp}</span>
+                            ${comment.reactions > 0 ? `<span class="comment-reactions">👍 ${comment.reactions}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(commentDiv);
+            });
+        }
+
+        // Simple XSS protection
+        function escapeHtml(str) {
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        // Add new comment (from user or auto)
+        function addNewComment(commentObj, prependToTop = true) {
+            if (prependToTop) {
+                comments.unshift(commentObj);
+            } else {
+                comments.push(commentObj);
+            }
+            renderComments();
+            updateMetrics();
+        }
+
+        // Like a comment by id
+        function likeCommentById(commentId) {
+            const comment = comments.find(c => c.id === commentId);
+            if (comment) {
+                comment.reactions += 1;
+                renderComments();    // re-render to show updated count
+                updateMetrics();     // comment count unchanged, but reactions updated
+            }
+        }
+
+        // Handle reply (demo alert for realism)
+        function replyToComment(commentId) {
+            const comment = comments.find(c => c.id === commentId);
+            if (comment) {
+                alert(`💬 Reply to ${comment.author}: (demo) Real Facebook would open reply box. But it adds to the viral energy!`);
+            } else {
+                alert('Reply feature — share your thoughts!');
+            }
+        }
+
+        // Auto add new comment every 6-12 seconds (viral feel)
+        function startAutoComments() {
+            if (autoInterval) clearInterval(autoInterval);
+            autoInterval = setInterval(() => {
+                const newComment = generateRandomComment();
+                addNewComment(newComment, true);
+                // subtle: update likes/shares not affected, but feels alive
+            }, Math.random() * 6000 + 7000); // 7-13 sec
+        }
+
+        // Stop auto comments (clean if needed, but keep)
+        function stopAutoComments() {
+            if (autoInterval) clearInterval(autoInterval);
+        }
+
+        // Share functionality
+        function handleShare() {
+            shares += 1;
+            updateMetrics();
+            // Simulate share modal/alert
+            alert('✨ Post shared! ✨\nYour friends will see the manifestation script.');
+            // optional browser share if available
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Sean Ali - 7-Minute Manifestation Script',
+                    text: '7 minutes before sleep changes everything!',
+                    url: window.location.href
+                }).catch(() => {});
+            }
+        }
+
+        // Main like toggle
+        function handleMainLike() {
+            if (userLiked) {
+                likes -= 1;
+                userLiked = false;
+                document.getElementById('likeBtn').classList.remove('liked');
+            } else {
+                likes += 1;
+                userLiked = true;
+                document.getElementById('likeBtn').classList.add('liked');
+            }
+            updateMetrics();
+        }
+
+        // Post a user comment from input
+        function postUserComment() {
+            const inputField = document.getElementById('commentInput');
+            const text = inputField.value.trim();
+            if (text === "") return;
+            
+            const newUserComment = {
+                id: Date.now() + '-' + Math.random().toString(36).substr(2, 8),
+                author: 'You',
+                avatar: 'YO',
+                text: text,
+                reactions: 0,
+                timestamp: 'Just now',
+                color: 'linear-gradient(135deg, #3b82f6, #1e40af)'
+            };
+            addNewComment(newUserComment, true);
+            inputField.value = '';
+            // auto-focus removal just fine
+        }
+
+        // Event delegation for comment likes and replies
+        function attachCommentDelegation() {
+            const container = document.getElementById('commentsContainer');
+            if (!container) return;
+            container.addEventListener('click', (e) => {
+                const likeSpan = e.target.closest('.like-comment');
+                if (likeSpan && likeSpan.dataset.id) {
+                    e.preventDefault();
+                    likeCommentById(likeSpan.dataset.id);
+                    return;
+                }
+                const replySpan = e.target.closest('.reply-comment');
+                if (replySpan && replySpan.dataset.id) {
+                    e.preventDefault();
+                    replyToComment(replySpan.dataset.id);
+                    return;
+                }
+            });
+        }
+
+        // Focus comment input when comment button is clicked
+        function scrollToCommentInput() {
+            const inputEl = document.getElementById('commentInput');
+            if (inputEl) {
+                inputEl.focus();
+                inputEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        // Initialize all events and timers
+        function initInteractivity() {
+            // Main like button
+            const likeBtn = document.getElementById('likeBtn');
+            if (likeBtn) likeBtn.addEventListener('click', handleMainLike);
+            
+            // Share button
+            const shareBtn = document.getElementById('shareBtn');
+            if (shareBtn) shareBtn.addEventListener('click', handleShare);
+            
+            // Comment navigation button
+            const commentNav = document.getElementById('commentNavBtn');
+            if (commentNav) commentNav.addEventListener('click', scrollToCommentInput);
+            
+            // Post comment button
+            const postBtn = document.getElementById('postCommentBtn');
+            if (postBtn) postBtn.addEventListener('click', postUserComment);
+            
+            // Allow enter key in input
+            const commentInput = document.getElementById('commentInput');
+            if (commentInput) {
+                commentInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        postUserComment();
+                    }
+                });
+            }
+            
+            // initial render
+            renderComments();
+            updateMetrics();
+            attachCommentDelegation();
+            
+            // start auto viral comments
+            startAutoComments();
+        }
+
+        // Ensure everything runs after DOM fully loaded
+        window.addEventListener('DOMContentLoaded', () => {
+            initInteractivity();
+        });
+
+        // Clean interval on page unload (optional)
+        window.addEventListener('beforeunload', () => {
+            stopAutoComments();
+        });
+    </script>
+</body>
+</html>
