@@ -57,27 +57,29 @@
         .sub-headline {
             font-size: 1.25rem;
             color: #475569;
-            margin-bottom: 30px;
+            margin-bottom: 24px;
             text-align: center;
         }
         .hero-image-wrap {
             display: flex;
             justify-content: center;
-            margin: 0 auto 32px;
+            margin: 0 auto 24px;
         }
         .hero-image {
-            width: min(100%, 360px);
-            height: auto;
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
             display: block;
-            border-radius: 18px;
-            box-shadow: 0 16px 40px rgba(15, 23, 42, 0.14);
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
         }
         .optin-card {
             background: #fff;
             border: 1px solid #e2e8f0;
             border-radius: 24px;
             padding: 40px;
-            margin: 32px auto;
+            margin: 24px auto;
             max-width: 600px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.05);
         }
@@ -154,19 +156,38 @@
             margin-bottom: 8px;
         }
         @media (max-width: 640px) {
-            .main-headline {
-                font-size: 26px;
-                line-height: 1.15;
-            }
             .vsl-container {
-                margin: 24px auto 40px;
-                padding: 0 16px 40px;
+                margin: 12px auto 20px;
+                padding: 0 12px 20px;
+            }
+            .main-headline {
+                font-size: 24px;
+                margin-bottom: 8px;
+            }
+            .sub-headline {
+                font-size: 1.05rem;
+                margin-bottom: 16px;
+                padding: 0 10px;
+            }
+            .hero-image-wrap {
+                margin-bottom: 16px;
+            }
+            .hero-image {
+                width: 100px;
+                height: 100px;
             }
             .optin-card {
-                padding: 24px;
+                padding: 20px;
+                margin: 16px auto;
+                border-radius: 16px;
             }
             .submit-btn {
                 font-size: 1.1rem;
+                padding: 16px 20px;
+            }
+            .trust-badge {
+                gap: 12px;
+                font-size: 12px;
             }
         }
     </style>
@@ -202,7 +223,7 @@
             </div>
 
             <div class="optin-card">
-                <div style="text-align: center; margin-bottom: 24px;">
+                <div style="text-align: center; margin-bottom: 20px;">
                     <div class="stars">★★★★★</div>
                     <p style="font-weight: 700; color: #0f172a; font-size: 14px;">4.9/5 · Loved by 100,000+ people worldwide</p>
                 </div>
@@ -226,7 +247,7 @@
                     <button type="submit" class="submit-btn">GET ACCESS NOW →</button>
                 </form>
 
-                <p style="font-size: 13px; color: #94a3b8; margin-top: 20px; text-align: center;">
+                <p style="font-size: 13px; color: #94a3b8; margin-top: 16px; text-align: center;">
                     🔒 Guaranteed Secure & Private.
                 </p>
             </div>
@@ -242,8 +263,8 @@
         </div>
     </div>
 
-    <div style="padding: 40px 20px; text-align: center; font-size: 10px; color: #94a3b8;">
-        This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.
+    <div style="padding: 20px 20px; text-align: center; font-size: 10px; color: #94a3b8;">
+        © 2026 Sean Ali · This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.
     </div>
 </body>
 </html>
