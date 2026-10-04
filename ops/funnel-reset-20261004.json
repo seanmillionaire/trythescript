@@ -1,0 +1,80 @@
+[
+  {
+    "repo": "script",
+    "path": "assets/funnel-reset.css",
+    "change": "Shared mobile and print styling for the new reset tools",
+    "baseline": "28b4692662b52ad14723e5a4c988027421f98e19"
+  },
+  {
+    "repo": "script",
+    "path": "assets/funnel-reset.js",
+    "change": "Local-only notes, assessment, trackers, session selector, print and text downloads",
+    "baseline": "28b4692662b52ad14723e5a4c988027421f98e19"
+  },
+  {
+    "repo": "script",
+    "path": "assets/funnel-events.js",
+    "change": "Named funnel events and UTM continuity; no Purchase event inferred from clicks",
+    "baseline": "28b4692662b52ad14723e5a4c988027421f98e19"
+  },
+  {
+    "repo": "script",
+    "path": "tools/7-night-tracker.html",
+    "change": "Printable and downloadable seven-night tracker with Night 1/3/7 check-ins",
+    "baseline": "28b4692662b52ad14723e5a4c988027421f98e19"
+  },
+  {
+    "repo": "script",
+    "path": "watch.html",
+    "change": "Consistent Nightly Rehearsal identity; canonical /watch paid entry, verified Hotmart checkout, lead route retained",
+    "baseline": "28b4692662b52ad14723e5a4c988027421f98e19"
+  },
+  {
+    "repo": "script",
+    "path": "index.html",
+    "change": "Consistent Nightly Rehearsal identity; canonical /watch paid entry, verified Hotmart checkout, lead route retained",
+    "baseline": "28b4692662b52ad14723e5a4c988027421f98e19"
+  },
+  {
+    "repo": "script",
+    "path": "join.html",
+    "change": "Consistent Nightly Rehearsal identity; canonical /watch paid entry, verified Hotmart checkout, lead route retained",
+    "baseline": "28b4692662b52ad14723e5a4c988027421f98e19"
+  },
+  {
+    "repo": "script",
+    "path": "sleep.html",
+    "change": "Consistent Nightly Rehearsal identity; canonical /watch paid entry, verified Hotmart checkout, lead route retained",
+    "baseline": "28b4692662b52ad14723e5a4c988027421f98e19"
+  },
+  {
+    "repo": "script",
+    "path": "manifest.html",
+    "change": "Consistent Nightly Rehearsal identity; canonical /watch paid entry, verified Hotmart checkout, lead route retained",
+    "baseline": "28b4692662b52ad14723e5a4c988027421f98e19"
+  },
+  {
+    "repo": "script",
+    "path": "confirmation.html",
+    "change": "Start Here \u2192 7 Nights \u2192 Use When Needed \u2192 Advanced; all audio/video/community links retained",
+    "baseline": "28b4692662b52ad14723e5a4c988027421f98e19"
+  },
+  {
+    "repo": "script",
+    "path": "oto2.html",
+    "change": "Replace 100\u00d7 speed claims with a specific morning/night/action routine; preserve player and offer",
+    "baseline": "28b4692662b52ad14723e5a4c988027421f98e19"
+  },
+  {
+    "repo": "script",
+    "path": "oto3.html",
+    "change": "Personal audio-toolbox packaging and six-state suite selector; $47 price and existing assets preserved",
+    "baseline": "28b4692662b52ad14723e5a4c988027421f98e19"
+  },
+  {
+    "repo": "script",
+    "path": "oto1.html",
+    "change": "Carry consistent funnel events and source attribution through the first upsell",
+    "baseline": "28b4692662b52ad14723e5a4c988027421f98e19"
+  }
+]
