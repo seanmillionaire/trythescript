@@ -23,3 +23,13 @@ p.script-compact-sub {font-family:'DM Sans',system-ui,sans-serif!important;font-
   }
   .script-intro-line {display:block;}
 }
+
+/* Compact phone header with natural wrapping. */
+@media(max-width:640px){
+.main-headline,.script-compact-title{font-size:14px!important;line-height:1.2!important;font-weight:700!important;letter-spacing:-.025em!important;margin:0 auto 4px!important;}
+.sub-headline,p.script-compact-sub{font-size:12px!important;line-height:1.25!important;margin:0 auto 6px!important;}
+.script-intro-line{display:inline;}
+.vsl-container{margin-top:10px!important;padding-left:12px!important;padding-right:12px!important;}
+.vsl-headline{margin-bottom:6px!important;}
+.video-wrapper{margin-top:8px!important;}
+}
