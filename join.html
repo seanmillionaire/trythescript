@@ -1,197 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Sean Ali | The 7-Minute Nightly Rehearsal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #f9fafb;
-            font-family: 'DM Sans', system-ui, sans-serif;
-            color: #1f2937;
-            line-height: 1.5;
-        }
-        h1, h2, h3 {
-            font-family: 'Sora', system-ui, sans-serif;
-            font-weight: 800;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-        .vsl-wrapper {
-            display: block;
-            opacity: 1;
-        }
-        .vsl-container {
-            max-width: 880px;
-            margin: 40px auto;
-            padding: 0 20px 60px;
-        }
-        .vsl-headline {
-            text-align: center;
-            margin-bottom: 28px;
-        }
-        .main-headline {
-            font-size: 38px;
-            line-height: 1.2;
-            background: linear-gradient(135deg, #111827, #ea580c);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 12px;
-            font-weight: 800;
-        }
-        .sub-headline {
-            font-size: 1.25rem;
-            color: #475569;
-            margin-bottom: 24px;
-            text-align: center;
-        }
-        .hero-image-wrap {
-            display: flex;
-            justify-content: center;
-            margin: 0 auto 24px;
-        }
-        .hero-image {
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
-            display: block;
-            border-radius: 50%;
-            border: 4px solid #fff;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
-        }
-        .optin-card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 24px;
-            padding: 40px;
-            margin: 24px auto;
-            max-width: 600px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-        }
-        .input-group {
-            margin-bottom: 16px;
-            text-align: left;
-        }
-        .input-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 700;
-            color: #64748b;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .input-field {
-            width: 100%;
-            padding: 16px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            background: #f8fafc;
-            font-size: 16px;
-            font-family: inherit;
-            transition: border-color 0.2s;
-        }
-        .input-field:focus {
-            outline: none;
-            border-color: #ea580c;
-        }
-        .submit-btn {
-            display: inline-block;
-            width: 100%;
-            background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
-            color: white;
-            text-decoration: none;
-            padding: 20px 30px;
-            font-size: 1.4rem;
-            font-weight: 800;
-            border-radius: 12px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(234, 88, 12, 0.25);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-family: 'Sora', sans-serif;
-            margin-top: 10px;
-        }
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 25px rgba(234, 88, 12, 0.35);
-        }
-        .video-caption {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 15px;
-            color: #6b7280;
-            border-top: 1px solid #e5e7eb;
-            padding-top: 24px;
-        }
-        .trust-badge {
-            display: flex;
-            justify-content: center;
-            gap: 28px;
-            margin-top: 24px;
-            flex-wrap: wrap;
-            font-size: 14px;
-            color: #4b5563;
-        }
-        .stars {
-            color: #f59e0b;
-            font-size: 18px;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-        }
-        @media (max-width: 640px) {
-            .vsl-container {
-                margin: 12px auto 20px;
-                padding: 0 12px 20px;
-            }
-            .main-headline {
-                font-size: 24px;
-                margin-bottom: 8px;
-            }
-            .sub-headline {
-                font-size: 1.05rem;
-                margin-bottom: 16px;
-                padding: 0 10px;
-            }
-            .hero-image-wrap {
-                margin-bottom: 16px;
-            }
-            .hero-image {
-                width: 100px;
-                height: 100px;
-            }
-            .optin-card {
-                padding: 20px;
-                margin: 16px auto;
-                border-radius: 16px;
-            }
-            .submit-btn {
-                font-size: 1.1rem;
-                padding: 16px 20px;
-            }
-            .trust-badge {
-                gap: 12px;
-                font-size: 12px;
-            }
-        }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: #fff; color: #172033; font-family: 'DM Sans', system-ui, sans-serif; line-height: 1.45; }
+      h1, h2, button { font-family: 'Sora', system-ui, sans-serif; }
+      .promo-bar { background: #c92520; color: white; text-align: center; padding: 11px 14px; font: 800 12px/1.35 'Sora', system-ui, sans-serif; letter-spacing: .035em; }
+      .page { max-width: 690px; margin: 0 auto; padding: 27px 18px 34px; text-align: center; }
+      .eyebrow { margin: 0 0 10px; font: 800 12px/1.4 'Sora', system-ui, sans-serif; letter-spacing: .09em; color: #b91c1c; text-transform: uppercase; }
+      h1 { max-width: 650px; margin: 0 auto; font-size: clamp(29px, 5.5vw, 44px); font-weight: 900; line-height: 1.13; letter-spacing: -.042em; color: #111827; }
+      h1 .highlight { color: #c92520; }
+      .subheadline { font-size: clamp(15px, 2.6vw, 18px); color: #596273; max-width: 550px; margin: 14px auto 0; line-height: 1.48; }
+      .hero-image-wrap { width: min(100%, 320px); margin: 18px auto 10px; display: flex; justify-content: center; align-items: center; }
+      .hero-image { display: block; width: auto; max-width: 100%; max-height: 260px; height: auto; object-fit: contain; border-radius: 14px; }
+      .optin-card { border-radius: 18px; padding: 22px 25px 19px; background: #fff; box-shadow: 0 10px 35px rgba(15, 23, 42, .10); border: 1px solid #e5e7eb; margin: 12px auto 0; text-align: center; }
+      .form-intro { color: #111827; font-size: 18px; font-weight: 800; line-height: 1.35; margin: 0 0 17px; }
+      .input-group { text-align: left; margin-bottom: 12px; }
+      .input-group label { display: block; font-weight: 700; font-size: 12px; color: #404b59; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 5px; }
+      .input-field { font: 500 16px 'DM Sans', system-ui, sans-serif; width: 100%; border: 1px solid #cfd5de; background: #f9fafb; border-radius: 10px; padding: 14px 15px; color: #111827; min-height: 52px; }
+      .input-field:focus-visible { outline: 3px solid #fca5a5; outline-offset: 1px; background: #fff; }
+      .submit-btn { display: block; width: 100%; border: 0; border-radius: 12px; cursor: pointer; min-height: 62px; padding: 17px 12px; margin-top: 5px; background: #dc2626; color: #fff; box-shadow: 0 9px 22px rgba(220, 38, 38, .22); font-size: clamp(17px, 3vw, 20px); font-weight: 900; line-height: 1.25; transition: background .18s, transform .18s; }
+      .submit-btn:hover { background: #b91c1c; transform: translateY(-2px); }
+      .submit-btn:focus-visible { outline: 3px solid #111827; outline-offset: 3px; }
+      .reassurance { color: #687385; font-size: 12px; margin: 13px 0 0; }
+      .quick-facts { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px 17px; margin: 18px auto 0; color: #385744; font-size: 12px; font-weight: 700; }
+      .quick-facts span { white-space: nowrap; }
+      .benefits { display: grid; gap: 10px; margin: 20px auto 0; max-width: 550px; text-align: left; }
+      .benefit { padding: 10px 14px; background: #f3faf5; border: 1px solid #e0efe5; border-radius: 11px; font-size: 14px; font-weight: 700; color: #253b2e; }
+      .proof { margin: 22px auto 0; max-width: 520px; text-align: center; color: #586474; font-size: 12px; }
+      .stars { color: #e6a11c; font-size: 17px; letter-spacing: 1px; margin-bottom: 3px; }
+      footer { text-align: center; max-width: 700px; margin: 6px auto 0; padding: 10px 22px 25px; color: #9aa3af; font-size: 10px; line-height: 1.6; }
+      @media (max-width: 580px) {
+        .promo-bar { padding: 9px 11px; font-size: 10px; }
+        .page { padding: 20px 13px 22px; }
+        .eyebrow { margin-bottom: 7px; }
+        .subheadline { margin-top: 11px; }
+        .hero-image-wrap { margin: 13px auto 6px; }
+        .hero-image { max-height: 185px; }
+        .optin-card { padding: 18px 16px 15px; border-radius: 14px; margin-top: 8px; }
+        .form-intro { font-size: 16px; margin-bottom: 13px; }
+        .input-field { min-height: 48px; padding: 12px 13px; }
+        .submit-btn { min-height: 57px; padding: 14px 10px; }
+        .quick-facts { gap: 7px 10px; margin-top: 15px; }
+        .benefits { gap: 7px; margin-top: 16px; }
+        .benefit { padding: 9px 12px; font-size: 13px; }
+      }
+      @media (prefers-reduced-motion: reduce) { .submit-btn { transition: none; } }
     </style>
-
     <!-- Facebook Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -212,23 +76,19 @@
 
 <meta name="funnel-id" content="script"><link rel="stylesheet" href="/assets/funnel-reset.css?v=20261004"></head>
 <body>
-    <div class="vsl-wrapper fade-in-up">
-        <div class="vsl-container">
-            <div class="vsl-headline">
-                <h1 class="main-headline">Try The 7-Minute Nightly Rehearsal</h1>
-                <p class="sub-headline">Use the final minutes before sleep to rehearse the thoughts and responses you want to make more familiar. One audio. Seven nights. One practical action each morning.</p>
-                <div class="hero-image-wrap">
-                    <img class="hero-image" src="https://trythescript.com/assets/7-minute-script-selfie.jpg" alt="The 7-Minute Script shown on a phone" loading="eager">
-                </div>
-            </div>
-
-            <div class="optin-card">
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <div class="stars">★★★★★</div>
-                    <p style="font-weight: 700; color: #0f172a; font-size: 14px;">4.9/5 · Loved by 100,000+ people worldwide</p>
-                </div>
-
-                <form method="post" accept-charset="UTF-8" action="https://www.aweber.com/scripts/addlead.pl">
+  <div class="promo-bar">🌙 A SIMPLE 7-MINUTE NIGHTLY PRACTICE</div>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">The 7-Minute Nightly Rehearsal</p>
+      <h1>Try The <span class="highlight">7-Minute Nightly Rehearsal</span> Tonight</h1>
+      <p class="subheadline">Use the final minutes before sleep to practice better thoughts and a new response for tomorrow.</p>
+    </header>
+    <div class="hero-image-wrap">
+      <img class="hero-image" src="/assets/7-minute-script-selfie.jpg" alt="The 7-Minute Script shown on a phone" loading="eager" fetchpriority="high">
+    </div>
+    <section class="optin-card" aria-label="Get your first step">
+      <p class="form-intro">Enter your details to get started.</p>
+      <form method="post" accept-charset="UTF-8" action="https://www.aweber.com/scripts/addlead.pl">
                     <input type="hidden" name="meta_web_form_id" value="184900578" />
                     <input type="hidden" name="listname" value="awlist6889085" />
                     <input type="hidden" name="redirect" value="https://trythescript.com/watch?source=script-lead" />
@@ -244,27 +104,27 @@
                         <label>Email Address</label>
                         <input type="email" name="email" placeholder="Enter your best email..." class="input-field" required>
                     </div>
-                    <button type="submit" class="submit-btn">GET ACCESS NOW →</button>
+                    <button type="submit" class="submit-btn">GET MY FIRST STEP →</button>
                 </form>
-
-                <p style="font-size: 13px; color: #94a3b8; margin-top: 16px; text-align: center;">
-                    🔒 Guaranteed Secure & Private.
-                </p>
-            </div>
-
-            <div class="video-caption">
-                ⚡ 7 minutes • Listen before sleep • Rewires the old pattern
-            </div>
-            <div class="trust-badge">
-                <span>🎧 Used by 100,000+ listeners</span>
-                <span>🧠 Subconscious reprogramming</span>
-                <span>🌙 7-night rehearsal plan</span>
-            </div>
-        </div>
+      <p class="reassurance">🔒 Your details stay private. No payment to get started.</p>
+    </section>
+    <div class="quick-facts" aria-label="How it works">
+      <span>⚡ 7 minutes</span>
+      <span>🌙 Use before sleep</span>
+      <span>📱 Works on your phone</span>
     </div>
-
-    <div style="padding: 20px 20px; text-align: center; font-size: 10px; color: #94a3b8;">
-        © 2026 Sean Ali · This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.
+    <div class="benefits">
+      <div class="benefit">✓ Practice a better response to old thought patterns</div>
+      <div class="benefit">✓ Build an easy-to-repeat bedtime routine</div>
+      <div class="benefit">✓ Wake up with one practical action to take</div>
     </div>
-<script src="/assets/funnel-events.js?v=20261004" defer></script><script src="/assets/funnel-reset.js?v=20261004" defer></script></body>
+    <div class="proof">
+      <div class="stars" aria-label="Five stars">★★★★★</div>
+      <p>4.9/5 · Loved by 100,000+ people worldwide</p>
+    </div>
+  </main>
+  <footer>© 2026 Sean Ali · This site is not part of the Facebook website or Facebook Inc., and is not endorsed by Facebook. FACEBOOK is a trademark of FACEBOOK, Inc.</footer>
+  <script src="/assets/funnel-events.js?v=20261004" defer></script>
+  <script src="/assets/funnel-reset.js?v=20261004" defer></script>
+</body>
 </html>
