@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <style>
+        /* Keep checkout out of sight until 10 minutes after the visitor arrives. */
+        html:not(.script-checkout-unlocked) [data-script-delay] { display: none !important; }
+
         * {
             margin: 0;
             padding: 0;
@@ -124,6 +127,36 @@
         @media (max-width: 640px) { .single-cta { margin-top: 10px; } .checkout-cta { padding: 18px 14px; } }
     </style>
 
+    <!-- Delayed checkout: 10 minutes per visitor, persisted across refreshes and /watch. -->
+    <script>
+    (function () {
+        var key = 'trythescript-checkout-first-visit-v1';
+        var delayMs = 10 * 60 * 1000;
+        var now = Date.now();
+        var startedAt = now;
+        try {
+            var saved = Number(window.localStorage.getItem(key));
+            if (Number.isFinite(saved) && saved > 0 && saved <= now) {
+                startedAt = saved;
+            } else {
+                window.localStorage.setItem(key, String(startedAt));
+            }
+        } catch (e) {
+            // Still delay checkout during this page view when storage is blocked.
+        }
+        function checkCheckoutDelay() {
+            var remaining = delayMs - (Date.now() - startedAt);
+            if (remaining <= 0) {
+                document.documentElement.classList.add('script-checkout-unlocked');
+                return;
+            }
+            window.setTimeout(checkCheckoutDelay, Math.min(remaining, 30000));
+        }
+        checkCheckoutDelay();
+        document.addEventListener('visibilitychange', checkCheckoutDelay);
+    })();
+    </script>
+
     <!-- Facebook Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -159,7 +192,7 @@
                 <vturb-smartplayer id="vid-6966599cbabb3c836813c52f" style="display: block; margin: 0 auto; width: 100%; height: auto;"></vturb-smartplayer>
             </div>
             <!-- Single next step beneath VSL; no competing panels or links. -->
-            <div class="single-cta">
+            <div class="single-cta" data-script-delay>
                 <a class="checkout-cta" href="https://pay.hotmart.com/F102533819G?checkoutMode=10">YES! I WANT THE SCRIPT NOW →</a>
                 <p>🔒 Secure checkout · Instant access</p>
             </div>
