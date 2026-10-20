@@ -19,10 +19,10 @@ h1,h2,button{font-family:'Sora',system-ui,sans-serif}
 .page{width:100%;max-width:860px;margin:0 auto;padding:30px 20px 48px;text-align:center}
 .eyebrow{margin:0 auto 13px;font:800 14px/1.35 'Sora',system-ui,sans-serif;letter-spacing:.065em;color:#b91c1c;text-transform:uppercase}
 .hero h1{max-width:830px;margin:0 auto;font:800 clamp(34px,5vw,52px)/1.14 'Sora',system-ui,sans-serif;letter-spacing:-.04em;color:#111827;text-wrap:balance}
-.subheadline{font-size:clamp(18px,2.2vw,21px);line-height:1.45;font-weight:700;color:#4b5563;max-width:620px;margin:16px auto 0}
+.hero-photo-wrap{display:flex;justify-content:center;margin:17px auto 0}
+.hero-circle-photo{display:block;width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:center;border:3px solid #fff;box-shadow:0 8px 24px rgba(15,23,42,.13)}
 .optin-card{max-width:575px;margin:25px auto 0;padding:26px 28px 22px;border:1px solid #e5e7eb;border-radius:20px;background:#fff;box-shadow:0 10px 32px rgba(15,23,42,.07);text-align:left}
-.form-intro{text-align:center;color:#111827;font:800 clamp(20px,2.5vw,24px)/1.3 'Sora',system-ui,sans-serif;margin:0 auto 8px;max-width:465px}
-.form-explain{margin:0 auto 19px;max-width:450px;text-align:center;color:#4b5563;font-size:17px;line-height:1.5}
+.form-intro{text-align:center;color:#111827;font:800 clamp(20px,2.5vw,24px)/1.3 'Sora',system-ui,sans-serif;margin:0 auto 18px;max-width:465px}
 .input-group{margin-bottom:13px;text-align:left}
 .input-group label{display:block;margin:0 0 6px;font-size:15px;font-weight:700;color:#374151}
 .input-field{width:100%;min-height:54px;padding:14px 16px;border:1px solid #cbd5e1;border-radius:11px;background:#f9fafb;color:#111827;font:500 18px/1.3 'DM Sans',system-ui,sans-serif}
@@ -31,36 +31,19 @@ h1,h2,button{font-family:'Sora',system-ui,sans-serif}
 .submit-btn:hover{background:#b91c1c;transform:translateY(-2px)}
 .submit-btn:focus-visible{outline:3px solid #111827;outline-offset:3px}
 .reassurance{text-align:center;color:#566274;font-size:14px;line-height:1.5;margin:13px auto 0}
-.visual-section{max-width:575px;margin:34px auto 0;padding:26px 22px 22px;background:#fff;border:1px solid #e5e7eb;border-radius:20px}
-.visual-title{margin:0 0 17px;color:#172033;font:800 20px/1.3 'Sora',system-ui,sans-serif}
-.photo-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
-.photo-pair figure{margin:0;min-width:0}
-.photo-pair img{display:block;width:100%;height:185px;max-width:100%;border-radius:14px;background:#f3f4f6;border:1px solid #e5e7eb;object-fit:cover}
-.photo-pair .script-photo{object-fit:contain;background:#f9fafb}
-.photo-pair figcaption{font-size:15px;line-height:1.35;font-weight:700;color:#374151;margin-top:10px}
-.quick-facts{display:flex;flex-wrap:wrap;justify-content:center;gap:9px 15px;margin:18px auto 0;max-width:610px;color:#286a45;font-size:16px;font-weight:700}
-.quick-facts span{white-space:normal}
-.proof{margin:23px auto 0;font-size:14px;color:#687385}
 footer{max-width:680px;margin:0 auto;padding:0 20px 28px;text-align:center;font-size:12px;line-height:1.6;color:#777f8e}
 @media(max-width:580px){
  .promo-bar{padding:9px 14px;font-size:12px}
  .page{padding:22px 20px 37px}
  .eyebrow{font-size:12px;margin-bottom:10px}
  .hero h1{font-size:clamp(32px,8.5vw,39px);line-height:1.16;letter-spacing:-.045em}
- .subheadline{font-size:19px;margin-top:13px}
+ .hero-circle-photo{width:88px;height:88px}
  .optin-card{margin-top:20px;padding:21px 18px 18px;border-radius:16px}
  .form-intro{font-size:20px}
- .form-explain{font-size:16px;margin-bottom:15px}
  .input-field{min-height:51px;font-size:17px}
  .submit-btn{margin-top:16px;min-height:59px;font-size:18px}
- .visual-section{margin-top:28px;padding:20px 14px;border-radius:16px}
- .visual-title{font-size:19px}
- .photo-pair{gap:11px}
- .photo-pair img{height:145px;border-radius:12px}
- .photo-pair figcaption{font-size:14px}
- .quick-facts{font-size:15px;gap:8px 12px}
 }
-@media(max-width:350px){.page{padding-inline:16px}.hero h1{font-size:30px}.photo-pair img{height:125px}.optin-card{padding-inline:15px}}
+@media(max-width:350px){.page{padding-inline:16px}.hero h1{font-size:30px}.optin-card{padding-inline:15px}}
 @media(prefers-reduced-motion:reduce){.submit-btn{transition:none}}
 </style>
     <!-- Facebook Pixel Code -->
@@ -89,11 +72,10 @@ footer{max-width:680px;margin:0 auto;padding:0 20px 28px;text-align:center;font-
     <header class="hero">
       <p class="eyebrow">SEAN ALI · THE 7-MINUTE SCRIPT</p>
       <h1>Reprogram Your Subconscious Mind for Wealth</h1>
-      <p class="subheadline">Try it tonight before bed 👇</p>
+      <div class="hero-photo-wrap"><img class="hero-circle-photo" src="/assets/7-minute-script-selfie.jpg" alt="Sean Ali holding the 7-Minute Script on a phone" width="96" height="96" loading="eager" decoding="async"></div>
     </header>
     <section class="optin-card" aria-label="Watch Sean's free explanation of the script">
-      <h2 class="form-intro">Watch Sean’s free video</h2>
-      <p class="form-explain">Replace old money worries with a simple nightly practice</p>
+      <h2 class="form-intro">Watch Sean’s free video to see how...</h2>
       <form method="post" accept-charset="UTF-8" action="https://www.aweber.com/scripts/addlead.pl">
                     <input type="hidden" name="meta_web_form_id" value="184900578" />
                     <input type="hidden" name="listname" value="awlist6889085" />
@@ -114,23 +96,6 @@ footer{max-width:680px;margin:0 auto;padding:0 20px 28px;text-align:center;font-
                 </form>
       <p class="reassurance">🔒 Free to watch · No payment required · Unsubscribe anytime<br>The full Script is available separately</p>
     </section>
-    <section class="visual-section" aria-label="Meet Sean and see the Script">
-      <h2 class="visual-title">Meet Sean &amp; see the Script</h2>
-      <div class="photo-pair">
-        <figure>
-          <img src="https://seanali.online/assets/sean-life/sean-beach-selfie.jpg" alt="Sean Ali, creator of the 7-Minute Script" width="220" height="185" loading="lazy" decoding="async">
-          <figcaption>Sean Ali</figcaption>
-        </figure>
-        <figure>
-          <img class="script-photo" src="/assets/7-minute-script-selfie.jpg" alt="The 7-Minute Script shown on a phone" width="220" height="185" loading="lazy" decoding="async">
-          <figcaption>The 7-Minute Script</figcaption>
-        </figure>
-      </div>
-    </section>
-    <div class="quick-facts" aria-label="What's next">
-      <span>🎥 Free video</span><span>🌙 Bedtime practice</span><span>📱 Watch on your phone</span>
-    </div>
-    <p class="proof">From Sean Ali · Hypnotic Meditations</p>
   </main>
   <footer>© 2026 Sean Ali · This site is not part of the Facebook website or Facebook Inc., and is not endorsed by Facebook. FACEBOOK is a trademark of FACEBOOK, Inc.</footer>
   <script src="/assets/funnel-events.js?v=20261004" defer></script>
