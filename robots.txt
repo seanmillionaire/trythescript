@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /thanks
+Disallow: /thank-you
+Disallow: /delivery
+
+Sitemap: https://trythescript.com/sitemap.xml
