@@ -1,243 +1,261 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head><link rel="canonical" href="https://trythescript.com/watch">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Sean Ali | The 7-Minute Nightly Rehearsal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        /* Keep checkout out of sight until 10 minutes after the visitor arrives. */
-        html:not(.script-checkout-unlocked) [data-script-delay] { display: none !important; }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #f9fafb;
-            font-family: 'DM Sans', system-ui, sans-serif;
-            color: #1f2937;
-            line-height: 1.5;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Sora', system-ui, sans-serif;
-            font-weight: 800;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        .vsl-wrapper {
-            display: block;
-            opacity: 1;
-        }
-
-        .vsl-container {
-            max-width: 880px;
-            margin: 20px auto 40px;
-            padding: 0 20px 60px;
-        }
-
-        .vsl-headline {
-            text-align: center;
-            margin-bottom: 12px;
-        }
-
-        .vsl-subhead { max-width: 590px; margin: 9px auto 0; font-size: 16px; line-height: 1.45; font-weight: 500; color: #4b5563; }
-        @media (max-width: 640px) { .vsl-subhead { max-width: 340px; margin-top: 6px; font-size: 14px; line-height: 1.35; } }
-
-        /* New main headline style */
-        .main-headline {
-            font-size: 24px;
-            line-height: 1.2;
-            background: linear-gradient(135deg, #111827, #ea580c);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 6px;
-            font-weight: 800;
-        }
-
-        /* Clean video wrapper: no background, no shadow, no border-radius */
-        .video-wrapper {
-            position: relative;
-            background: transparent;
-            margin: 16px 0 32px;
-        }
-
-        .video-wrapper vturb-smartplayer {
-            width: 100% !important;
-            display: block !important;
-            background: transparent;
-        }
-
-        .video-caption {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 15px;
-            color: #6b7280;
-            border-top: 1px solid #e5e7eb;
-            padding-top: 24px;
-        }
-
-        .trust-badge {
-            display: flex;
-            justify-content: center;
-            gap: 28px;
-            margin-top: 24px;
-            flex-wrap: wrap;
-            font-size: 14px;
-            color: #4b5563;
-        }
-
-        @media (max-width: 640px) {
-            .main-headline {
-                font-size: 18px;
-                line-height: 1.2;
-            }
-            .vsl-container {
-                margin: 16px auto 40px;
-                padding: 0 16px 40px;
-            }
-            .video-wrapper {
-                margin: 12px 0 20px;
-            }
-        }
-
-        /* Hide any leftover quiz elements (just in case) */
-        .quiz-wrapper, .quiz-card, .quiz-header, .progress-area, .quiz-option {
-            display: none;
-        }
-
-        /* One clear action beneath the video */
-        .single-cta { text-align: center; margin: 16px auto 0; max-width: 620px; }
-        .checkout-cta { display: block; width: 100%; background: #ea580c; color: #fff; font-family: 'Sora', system-ui, sans-serif; font-weight: 800; font-size: clamp(16px, 3vw, 21px); line-height: 1.3; padding: 20px 22px; border-radius: 12px; text-decoration: none; box-shadow: 0 8px 22px rgba(234, 88, 12, .22); transition: transform .2s, background .2s; }
-        .checkout-cta:hover { background: #c2410c; transform: translateY(-2px); }
-        .checkout-cta:focus-visible { outline: 3px solid #111827; outline-offset: 4px; }
-        .single-cta p { margin-top: 12px; color: #6b7280; font-size: 13px; }
-        @media (max-width: 640px) { .single-cta { margin-top: 10px; } .checkout-cta { padding: 18px 14px; } }
-    </style>
-
-    <!-- Delayed checkout: 10 minutes per visitor, persisted across refreshes and /watch. -->
-    <script>
-    (function () {
-        var key = 'trythescript-checkout-first-visit-v1';
-        var delayMs = 10 * 60 * 1000;
-        var now = Date.now();
-        var startedAt = now;
-        try {
-            var saved = Number(window.localStorage.getItem(key));
-            if (Number.isFinite(saved) && saved > 0 && saved <= now) {
-                startedAt = saved;
-            } else {
-                window.localStorage.setItem(key, String(startedAt));
-            }
-        } catch (e) {
-            // Still delay checkout during this page view when storage is blocked.
-        }
-        function checkCheckoutDelay() {
-            var remaining = delayMs - (Date.now() - startedAt);
-            if (remaining <= 0) {
-                document.documentElement.classList.add('script-checkout-unlocked');
-                return;
-            }
-            window.setTimeout(checkCheckoutDelay, Math.min(remaining, 30000));
-        }
-        checkCheckoutDelay();
-        document.addEventListener('visibilitychange', checkCheckoutDelay);
-    })();
-    </script>
-
-    <!-- Facebook Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1586097145783190');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1586097145783190&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Facebook Pixel Code -->
-
-<meta name="funnel-id" content="script"><link rel="stylesheet" href="/assets/funnel-reset.css?v=20261004"><link rel="stylesheet" href="/assets/compact-intro.css?v=20261014-compact2">
-<style>
-/* Keep the headline on two balanced lines at every screen size. */
-#vslSection .main-headline { font-size: clamp(16px, 4.3vw, 24px) !important; line-height: 1.25 !important; }
-#vslSection .main-headline > span { display: block; white-space: nowrap; }
-</style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbfaf7">
+  <meta name="description" content="Still saving money advice without changing your daily routine? Discover Sean Ali's simple 7-minute guided visualization practice. Watch how the script works.">
+  <title>Try The Script | A 7-Minute Money Meditation Practice by Sean Ali</title>
+  <link rel="canonical" href="https://trythescript.com/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Try The Script | Give Your Money Goals 7 Focused Minutes">
+  <meta property="og:description" content="A simple guided money visualization practice by Sean Ali. Watch how the 7-minute script works.">
+  <meta property="og:url" content="https://trythescript.com/">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:light;--ink:#161d2a;--muted:#596171;--orange:#ed6a29;--orange-dark:#cc4d13;--cream:#fbfaf7;--line:#eae7df;--navy:#182034}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2,h3{font-family:Sora,Arial,sans-serif;letter-spacing:-.045em;line-height:1.13}
+    a{color:inherit}
+    a:focus-visible,button:focus-visible{outline:3px solid #ef9e63;outline-offset:4px}
+    .container{width:min(1150px,calc(100% - 48px));margin:auto}
+    .topline{height:7px;background:linear-gradient(90deg,#ed6a29,#ffbd77,#e75d32)}
+    header{background:rgba(251,250,247,.92);border-bottom:1px solid #ede9e2}
+    .nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;font:800 21px/1 Sora,Arial,sans-serif;letter-spacing:-1px;white-space:nowrap}
+    .brand-symbol{width:40px;height:40px;display:grid;place-items:center;border-radius:13px;background:#1d2636;color:#fff;font-size:22px}
+    .brand em{font-style:normal;color:var(--orange)}
+    .nav-links{display:flex;align-items:center;gap:29px;font-size:14px;font-weight:700}
+    .nav-links .quiet{color:#626978;text-decoration:none}
+    .nav-links .quiet:hover{text-decoration:underline}
+    .nav-cta{padding:12px 20px;border-radius:100px;background:#1e2634;color:#fff;text-decoration:none}
+    .nav-cta:hover{background:#303c50}
+    .hero{padding:80px 0 86px;position:relative;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);align-items:center;gap:66px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 15px;border-radius:40px;background:#fff2e8;border:1px solid #f9dbc3;color:#9a4219;font-size:12px;font-weight:800;letter-spacing:.085em;text-transform:uppercase}
+    .eyebrow .dot{height:7px;width:7px;border-radius:50%;background:var(--orange)}
+    h1{font-size:clamp(43px,4.75vw,68px);margin:25px 0 24px;max-width:700px;letter-spacing:-.065em}
+    h1 span{color:#dd6126}
+    .lead{font-size:19px;color:#4c5666;max-width:585px;line-height:1.72;margin-bottom:28px}
+    .primary{display:inline-flex;align-items:center;justify-content:center;gap:13px;text-decoration:none;background:linear-gradient(135deg,#f17732,#e4551d);box-shadow:0 12px 28px #d75b252c;border-radius:14px;color:white;font-size:16px;font-weight:800;padding:20px 27px;min-height:62px;transition:transform .15s ease,box-shadow .15s ease;text-align:center}
+    .primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px #d75b2540}
+    .primary span{font-size:22px;font-weight:600}
+    .micro{font-size:13px;color:#747b86;margin:13px 0 0}
+    .hero-visual{position:relative;padding:26px;min-height:520px;display:grid;place-items:center}
+    .aura{position:absolute;inset:4% -2%;border-radius:50%;background:radial-gradient(circle at 52% 50%,#f8ca9e 0%,#ffe9d4 35%,#fbfaf700 72%);filter:blur(4px)}
+    .orbit{position:absolute;inset:15% 6%;border:1px solid #edbd9a;border-radius:50%;transform:rotate(-21deg)}
+    .orbit.two{inset:22% -5%;transform:rotate(25deg);opacity:.55}
+    .player{position:relative;z-index:1;width:min(100%,375px);background:#192338;color:white;border:1px solid #34405a;border-radius:27px;padding:31px 28px;box-shadow:0 32px 62px #1b243626;transform:rotate(-3deg)}
+    .player-top{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#e6dacf;font-size:11px;font-weight:800;letter-spacing:.1em}
+    .player-top .star{font-size:23px;color:#ffb26f}
+    .art{height:206px;background:radial-gradient(circle at 50% 57%,#f6b776 0 7%,#e67d4d 8% 17%,#814c6a 38%,#263553 66%,#172138 100%);border-radius:20px;margin:26px 0 22px;position:relative;overflow:hidden}
+    .art:before,.art:after{content:"";position:absolute;left:-25%;right:-25%;height:125px;border:1px solid #ffffff35;border-radius:50%}
+    .art:before{top:104px}.art:after{top:145px}
+    .art-label{position:absolute;top:20px;left:22px;color:#fff9;font-size:11px;letter-spacing:.13em;font-weight:800}
+    .player h3{font-size:23px;letter-spacing:-.035em;margin:0 0 8px}
+    .player p{color:#c6ccd7;font-size:13px;margin:0 0 22px}
+    .sound{height:37px;display:flex;justify-content:space-between;align-items:center;gap:4px;margin-bottom:18px;opacity:.95}
+    .sound i{flex:1;height:var(--h);max-height:32px;border-radius:4px;background:linear-gradient(#ffb986,#e76a38)}
+    .timeline{display:flex;align-items:center;justify-content:space-between;color:#ccd3de;font-size:11px;font-weight:700}
+    .track{height:4px;flex:1;background:#3e4b61;margin:0 12px;border-radius:8px}
+    .track b{display:block;width:40%;height:100%;background:#f09b62;border-radius:8px}
+    .float-note{position:absolute;z-index:2;right:-5px;bottom:47px;background:white;color:#293143;box-shadow:0 13px 35px #1b24351c;padding:15px 17px;border-radius:15px;font-size:12px;font-weight:800;transform:rotate(4deg)}
+    .float-note span{color:#e66a31}
+    .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:white;padding:21px 0}
+    .strip-inner{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;text-align:center;color:#555f70;font-size:13px;font-weight:800}
+    .strip-inner span{display:flex;align-items:center;gap:9px}
+    .strip-inner b{color:#e56731;font-size:17px}
+    .section{padding:93px 0}
+    .section-head{text-align:center;max-width:760px;margin:0 auto 46px}
+    .small-label{color:#d95d26;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin:0 0 17px}
+    h2{font-size:clamp(32px,3.5vw,46px);margin:0 0 16px}
+    .section-head p:last-child{color:#5a6573;font-size:18px;margin:0}
+    .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+    .step{background:white;border:1px solid var(--line);border-radius:22px;padding:32px 27px 30px;min-height:265px;box-shadow:0 12px 27px #1b233608}
+    .number{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:#fff0e3;color:#d95e25;font-family:Sora,sans-serif;font-size:19px;font-weight:800;margin-bottom:25px}
+    .step h3{font-size:20px;margin:0 0 10px;letter-spacing:-.035em}
+    .step p{color:#667080;font-size:15px;margin:0;line-height:1.7}
+    .explain{background:#20293b;color:#fff;padding:80px 0}
+    .explain-grid{display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:center}
+    .explain .small-label{color:#ffb680}
+    .explain h2{font-size:clamp(31px,3vw,44px)}
+    .explain p{color:#cbd1dc;font-size:17px;line-height:1.76}
+    .quote{border:1px solid #47546b;background:#29354a;border-radius:24px;padding:36px}
+    .quote .mark{font-size:37px;color:#ffac73;line-height:1}
+    .quote p{font-family:Sora,sans-serif;font-size:22px;line-height:1.5;letter-spacing:-.028em;color:#fff;margin:16px 0 22px}
+    .quote small{color:#f2af80;font-weight:800;letter-spacing:.02em}
+    .faq{max-width:810px;margin:auto}
+    .faq details{border-bottom:1px solid #e6e2da;padding:20px 4px}
+    .faq summary{font-weight:800;font-size:17px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary:after{content:"+";font-size:22px;color:#e16b36}
+    .faq details[open] summary:after{content:"−"}
+    .faq details p{margin:12px 0 3px;color:#616b78;line-height:1.7}
+    .last{padding:0 0 84px}
+    .closing{background:linear-gradient(135deg,#fff3e8,#fff9f1);border:1px solid #f2dfce;border-radius:32px;text-align:center;padding:62px 30px}
+    .closing h2{max-width:640px;margin:0 auto 18px}
+    .closing p{font-size:17px;color:#596374;margin:0 auto 27px;max-width:620px}
+    footer{border-top:1px solid var(--line);padding:27px 0;color:#777e8b;font-size:13px}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:18px}
+    .footer-inner a{color:#3c4655;font-weight:700;text-decoration:none}
+    .footer-inner a:hover{text-decoration:underline}
+    @media(max-width:880px){
+      .nav-links .quiet{display:none}
+      .hero{padding:54px 0 62px}
+      .hero-grid{grid-template-columns:1fr;gap:12px}
+      .hero-copy{text-align:center}
+      .hero-copy h1,.hero-copy .lead{margin-left:auto;margin-right:auto}
+      .hero-visual{min-height:445px;max-width:500px;margin:0 auto;width:100%}
+      .steps{grid-template-columns:1fr;max-width:640px;margin:auto}
+      .step{min-height:0}
+      .explain-grid{grid-template-columns:1fr;gap:25px}
+    }
+    @media(max-width:580px){
+      .container{width:calc(100% - 34px)}
+      .nav{min-height:69px}
+      .brand{font-size:17px;gap:8px}
+      .brand-symbol{width:33px;height:33px;border-radius:10px;font-size:18px}
+      .nav-cta{padding:10px 13px;font-size:12px}
+      .hero{padding:42px 0 49px}
+      h1{font-size:clamp(37px,9.3vw,52px);margin:21px 0 18px}
+      .lead{font-size:16px;line-height:1.7}
+      .primary{display:flex;width:100%;font-size:14px;padding:16px 13px;min-height:57px}
+      .hero-visual{min-height:380px;padding:10px}
+      .player{width:82%;padding:23px 20px;border-radius:23px}
+      .art{height:143px;margin:18px 0}
+      .player h3{font-size:19px}
+      .float-note{right:0;bottom:16px;font-size:10px}
+      .section{padding:66px 0}
+      .section-head{margin-bottom:30px}
+      h2{font-size:31px}
+      .section-head p:last-child{font-size:16px}
+      .step{padding:25px 24px}
+      .explain{padding:64px 0}
+      .quote{padding:27px}
+      .quote p{font-size:19px}
+      .closing{padding:47px 20px;border-radius:23px}
+      .footer-inner{flex-direction:column;align-items:flex-start}
+      .strip-inner{gap:10px 16px;font-size:12px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.primary{transition:none}}
+  </style>
+  <script>
+    // Use the same existing Meta pixels as the watch page; do not create new IDs.
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1586097145783190');fbq('init','878451855254470');fbq('track','PageView');
+  </script>
 </head>
 <body>
-    <!-- VSL SECTION: Updated headline, clean video -->
-    <div id="vslSection" class="vsl-wrapper fade-in-up">
-        <div class="vsl-container">
-            <div class="vsl-headline">
-                <!-- New requested headline -->
-                <h1 class="main-headline"><span>This 7-Minute Script Reprograms</span> <span>Your Subconscious for Wealth 👇</span></h1>
-            </div>
-            <!-- Clean video wrapper: no background, no shadow, no border radius -->
-            <div class="video-wrapper">
-                <vturb-smartplayer id="vid-6966599cbabb3c836813c52f" style="display: block; margin: 0 auto; width: 100%; height: auto;"></vturb-smartplayer>
-            </div>
-            <!-- Single next step beneath VSL; no competing panels or links. -->
-            <div class="single-cta" data-script-delay>
-                <a class="checkout-cta" href="https://pay.hotmart.com/F102533819G?checkoutMode=10">YES! I WANT THE SCRIPT NOW →</a>
-                <p>🔒 Secure checkout · Instant access</p>
-            </div>
+  <div class="topline" aria-hidden="true"></div>
+  <header>
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="/" aria-label="Try The Script homepage"><span class="brand-symbol" aria-hidden="true">✦</span><span>trythe<em>script.</em></span></a>
+      <div class="nav-links">
+        <a class="quiet" href="#how-it-works">How it works</a>
+        <a class="quiet" href="#about-sean">Meet Sean</a>
+        <a class="nav-cta watch-link" href="/watch">Watch the Video →</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="dot" aria-hidden="true"></span>A 7-minute money meditation practice</div>
+          <h1 id="hero-title">Your money goals deserve more than <span>another saved video.</span></h1>
+          <p class="lead">You watch advice. You make plans. Then the day gets busy and nothing changes. Here's a simple habit to try instead: put on your headphones, picture the future you're working toward, and take action.</p>
+          <a class="primary watch-link" href="/watch">WATCH HOW THE SCRIPT WORKS <span aria-hidden="true">→</span></a>
+          <p class="micro">Free video with Sean Ali · No sign-up needed to watch</p>
         </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="aura"></div><div class="orbit"></div><div class="orbit two"></div>
+          <div class="player">
+            <div class="player-top"><span>THE 7-MINUTE SCRIPT</span><span class="star">✦</span></div>
+            <div class="art"><span class="art-label">FOCUS ON YOUR FUTURE</span></div>
+            <h3>Picture what's possible.</h3>
+            <p>Guided money visualization · By Sean Ali</p>
+            <div class="sound">
+              <i style="--h:9px"></i><i style="--h:20px"></i><i style="--h:12px"></i><i style="--h:26px"></i><i style="--h:17px"></i><i style="--h:31px"></i><i style="--h:18px"></i><i style="--h:12px"></i><i style="--h:24px"></i><i style="--h:29px"></i><i style="--h:14px"></i><i style="--h:23px"></i><i style="--h:13px"></i><i style="--h:27px"></i><i style="--h:18px"></i><i style="--h:10px"></i>
+            </div>
+            <div class="timeline"><span>FOCUS</span><span class="track"><b></b></span><span>FOLLOW THROUGH</span></div>
+          </div>
+          <div class="float-note">✳️ Small daily habit.<br><span>Clearer next step.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip">
+      <div class="container strip-inner"><span><b>✓</b> Simple enough for beginners</span><span><b>✓</b> Guided visualization</span><span><b>✓</b> One clear next step</span></div>
     </div>
 
-    <!-- Meta Pixel & Hotmart Launcher -->
-    <script>
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '878451855254470');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=878451855254470&ev=PageView&noscript=1"/></noscript>
+    <section class="section" id="how-it-works" aria-labelledby="steps-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="small-label">Less scrolling. More doing.</p>
+          <h2 id="steps-title">What if your next money habit was this simple?</h2>
+          <p>Skip the complicated rituals. Make a few minutes of space for your own goals, then do something about them.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="number">01</div><h3>Press play</h3><p>Put on headphones and settle in for a short guided meditation practice.</p></div>
+          <div class="step"><div class="number">02</div><h3>Picture your goal</h3><p>Imagine the money, choices, and freedom you're actually working toward. Make the picture specific.</p></div>
+          <div class="step"><div class="number">03</div><h3>Take one real step</h3><p>After the practice, choose one useful action you can take in the real world.</p></div>
+        </div>
+      </div>
+    </section>
 
-    <script id="hotmart_launcher_script">
-        (function(l,a,u,n,c,h,e,r){l['HotmartLauncherObject']=c;l[c]=l[c]||function(){(l[c].q=l[c].q||[]).push(arguments)},l[c].l=1*new Date();h=a.createElement(u),e=a.getElementsByTagName(u)[0];h.async=1;h.src=n;e.parentNode.insertBefore(h,e)})(window,document,'script','//launcher.hotmart.com/launcher.js','hot');
-        hot('account','3a3058a6-7369-3d97-a1a0-ba9baed71541');
-    </script>
+    <section class="explain" id="about-sean" aria-labelledby="about-title">
+      <div class="container explain-grid">
+        <div>
+          <p class="small-label">Made by Sean Ali</p>
+          <h2 id="about-title">Not another “think rich and wait” promise.</h2>
+          <p>I'm Sean. I make money meditations, and I listen to my own recordings. I use them to focus on what I'm building before I get lost in the day's noise.</p>
+          <p>The point isn't to sit around wishing. It's to picture what matters to you, then get up and do the work. I made this script to share that simple practice.</p>
+          <a class="primary watch-link" href="/watch">SEE HOW MY SCRIPT WORKS <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="quote">
+          <div class="mark" aria-hidden="true">“</div>
+          <p>Headphones on. Close your eyes. Picture what you want. Then go do something toward it.</p>
+          <small>THE PRACTICE · SEAN ALI</small>
+        </div>
+      </div>
+    </section>
 
-    <!-- ConverteAI Smart Player Script -->
-    <script type="text/javascript">
-        (function() {
-            var s = document.createElement("script");
-            s.src = "https://scripts.converteai.net/06805447-0fe0-4045-89f5-ea45443a5071/players/6966599cbabb3c836813c52f/v4/player.js";
-            s.async = true;
-            document.head.appendChild(s);
-        })();
-    </script>
+    <section class="section" aria-labelledby="faq-title">
+      <div class="container faq">
+        <div class="section-head"><p class="small-label">Good to know</p><h2 id="faq-title">A few quick answers.</h2></div>
+        <details><summary>Is the video free to watch?</summary><p>Yes. You can watch Sean explain the script without signing up. If you want the complete product afterward, the watch page explains that next step.</p></details>
+        <details><summary>Do I need meditation experience?</summary><p>No. The idea is simple: listen, picture a goal, and take one useful action. You don't need special skills to begin.</p></details>
+        <details><summary>Will listening to this make me rich?</summary><p>No audio can guarantee money or success. This is a guided focus and visualization practice, not a replacement for learning, planning, or taking action.</p></details>
+      </div>
+    </section>
 
-    <script>
-        (function() {
-            if (typeof window !== 'undefined') {
-                window.addEventListener('load', function() {
-                    setTimeout(function() {
-                        window.dispatchEvent(new Event('resize'));
-                    }, 200);
-                });
-            }
-        })();
-    </script>
-<script src="/assets/funnel-events.js?v=20261004" defer></script><script src="/assets/funnel-reset.js?v=20261004" defer></script></body>
+    <section class="last">
+      <div class="container closing">
+        <p class="small-label">Ready to begin?</p>
+        <h2>Stop collecting advice.<br>Try a practice you can repeat.</h2>
+        <p>Watch the short presentation and see what the 7-minute script is all about.</p>
+        <a class="primary watch-link" href="/watch">WATCH THE VIDEO NOW <span aria-hidden="true">→</span></a>
+        <p class="micro">No pressure. Just a clear place to start.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><span>© 2026 Try The Script · A Sean Ali project</span><span>Guided visualization supports focus, not guaranteed financial results.</span><a class="watch-link" href="/watch">Watch the video →</a></div></footer>
+  <script>
+    // Keep campaign attribution when visitors move from the homepage into /watch.
+    (function(){
+      var query=window.location.search||'';
+      var links=document.querySelectorAll('a.watch-link');
+      for(var i=0;i<links.length;i++){links[i].href='/watch'+query;}
+    })();
+  </script>
+</body>
 </html>
