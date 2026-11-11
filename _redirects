@@ -1,2 +1,3 @@
-# Consolidate the duplicate homepage onto its declared canonical sales page.
-/ /watch 301
+# The root / now serves the dedicated index.html homepage.
+# Keep /watch available as the existing VSL destination.
+# No redirect from / to /watch.
