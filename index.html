@@ -144,6 +144,27 @@
       .footer-inner{flex-direction:column;align-items:flex-start}
       .strip-inner{gap:10px 16px;font-size:12px}
     }
+
+    /* Primary action stays in the first screen on phones and laptops. */
+    @media(max-width:880px){
+      .hero{padding-top:31px}
+      .hero .eyebrow{max-width:100%;line-height:1.35}
+      .hero-copy h1{margin:15px auto 13px}
+      .hero-copy .lead{margin-bottom:19px}
+    }
+    @media(max-width:580px){
+      .hero{padding-top:21px}
+      .hero .eyebrow{font-size:10px;padding:7px 10px}
+      .hero-copy h1{font-size:clamp(32px,8.5vw,43px);line-height:1.13;letter-spacing:-.055em;margin:13px auto 12px}
+      .hero-copy .lead{font-size:15px;line-height:1.46;margin:0 auto 17px}
+      .hero .primary{min-height:54px;padding:14px 11px;line-height:1.25}
+      .hero .micro{margin-top:9px}
+    }
+    @media(max-width:360px){
+      .hero{padding-top:15px}
+      .hero-copy h1{font-size:clamp(30px,8.4vw,34px)}
+      .hero-copy .lead{font-size:14px;line-height:1.4}
+    }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.primary{transition:none}}
   </style>
   <script>
@@ -171,7 +192,7 @@
         <div class="hero-copy">
           <div class="eyebrow"><span class="dot" aria-hidden="true"></span>A simple 7-minute script for your money mindset</div>
           <h1 id="hero-title">What If 7 Minutes Could Change <span>How You Think About Money?</span></h1>
-          <p class="lead">If you've tried affirmations, vision boards, and manifestation videos but still fall into the same old habits, this is for you. Sean Ali created a short guided money visualization to help you focus on the future you're building. Watch him explain the script and how to use it.</p>
+          <p class="lead">Tried affirmations and manifestation videos but keep falling into the same habits? Sean Ali's 7-minute guided script gives you a simple practice to try.</p>
           <a class="primary watch-link" href="/watch">WATCH SEAN EXPLAIN THE SCRIPT <span aria-hidden="true">→</span></a>
           <p class="micro">Watch the free video · Learn the simple 7-minute practice</p>
         </div>
