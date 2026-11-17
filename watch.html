@@ -148,36 +148,7 @@
         }
     </style>
 
-    <!-- Delayed checkout: 10 minutes per visitor, persisted across refreshes and /watch. -->
-    <script>
-    (function () {
-        var key = 'trythescript-checkout-first-visit-v1';
-        var delayMs = 10 * 60 * 1000;
-        var now = Date.now();
-        var startedAt = now;
-        try {
-            var saved = Number(window.localStorage.getItem(key));
-            if (Number.isFinite(saved) && saved > 0 && saved <= now) {
-                startedAt = saved;
-            } else {
-                window.localStorage.setItem(key, String(startedAt));
-            }
-        } catch (e) {
-            // Still delay checkout during this page view when storage is blocked.
-        }
-        function checkCheckoutDelay() {
-            var remaining = delayMs - (Date.now() - startedAt);
-            if (remaining <= 0) {
-                document.documentElement.classList.add('script-checkout-unlocked');
-                return;
-            }
-            window.setTimeout(checkCheckoutDelay, Math.min(remaining, 30000));
-        }
-        checkCheckoutDelay();
-        document.addEventListener('visibilitychange', checkCheckoutDelay);
-    })();
-    </script>
-
+    <!-- Watch-only checkout reveal: fresh 10-minute timer per page load. -->
     <!-- Facebook Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -203,7 +174,7 @@
 #vslSection .main-headline > span { display: block; white-space: nowrap; }
 </style>
 <script defer src="/assets/sa-analytics.js" data-analytics-host="trythescript.com" data-analytics-path="/watch" data-analytics-title="Sean Ali | The 7-Minute Nightly Rehearsal" data-analytics-privacy="https://hypnoticmeditations.ai/about/policy.html"></script>
-</head>
+<link rel="stylesheet" href="/assets/script-offer-reveal.css?v=20261117b"><script src="/assets/script-watch-offer-reveal.js?v=20261117" defer></script><style>.timer-note{text-align:center;margin:24px auto;padding:16px;background:#fff8e1;border-radius:8px}.script-checkout-unlocked .timer-note{display:none}</style></head>
 <body>
     <!-- VSL SECTION: Updated headline, clean video -->
     <div id="vslSection" class="vsl-wrapper fade-in-up">
@@ -218,7 +189,48 @@
             </div><div class="video-caption">
                 ⚡ 7 minutes • Listen before sleep • Rewires the old pattern
             </div>
-            <a class="script-checkout-cta" data-script-delay href="https://store.hypnoticmeditations.ai/order">GET THE SCRIPT NOW →</a>
+            <p class="timer-note">Watch the presentation first.<br>Your full offer unlocks in <strong data-cta-countdown>10:00</strong>.</p><p id="script-offer-status" class="script-offer-sr" role="status" aria-live="polite"></p>
+<section id="script-full-offer" class="script-offer" data-script-delay aria-labelledby="script-offer-title">
+  <div class="offer-panel">
+    <p class="offer-kicker">Ready to try it tonight?</p>
+    <h2 id="script-offer-title">Make Room for More Abundance.<br>Start With Seven Minutes Tonight.</h2>
+    <p>Get The 7-Minute Script System. A guided evening practice to help you visualize what you want and give your money goals your full attention.</p>
+    <p class="offer-price">$27 USD</p>
+    <p class="offer-terms">One-time purchase · Plus applicable tax</p>
+    <a id="script-order-button" class="offer-button checkout" href="https://store.hypnoticmeditations.ai/order">YES! GET THE 7-MINUTE SCRIPT →</a>
+    <div class="offer-trust"><span>🎧 Digital audio</span><span>📩 Access by email</span><span>🔒 Secure checkout</span></div>
+  </div>
+  <div class="offer-block">
+    <p class="offer-kicker">Your nightly practice, made simple</p>
+    <h2>Less Overthinking.<br>Something You Can Actually Follow.</h2>
+    <ul class="offer-list">
+      <li><span class="offer-icon" aria-hidden="true">🎧</span><h3>Press play. Follow along.</h3><p>A guided seven-minute audio practice. No long script to memorize.</p></li>
+      <li><span class="offer-icon" aria-hidden="true">🌙</span><h3>Give your goals seven minutes.</h3><p>Make space before sleep to visualize abundance instead of scrolling through more advice.</p></li>
+      <li><span class="offer-icon" aria-hidden="true">📱</span><h3>Keep it within reach.</h3><p>Use the access instructions in your email to listen on your phone or computer.</p></li>
+    </ul>
+  </div>
+  <div class="offer-block">
+    <p class="offer-kicker">Included with your purchase</p>
+    <h2>The 7-Minute Script System</h2>
+    <img class="offer-visual" src="/assets/script-offer-product.jpg" alt="The 7-Minute Script digital audio package" width="1080" height="1080" loading="lazy"><p>Your guided audio practice, with digital access after checkout.</p>
+    <p class="offer-terms">No physical product. No shipping. Optional checkout add-ons are separate from this offer.</p>
+  </div>
+  <div class="offer-block">
+    <h2>Quick Questions</h2>
+    <details><summary>How do I use it?</summary><p>Set aside seven quiet minutes before sleep. Press play and follow the guided audio. Do not listen while driving or doing anything that needs your full attention.</p></details>
+    <details><summary>Do I need meditation experience?</summary><p>No. The audio guides you through the practice. You do not need to memorize the words or build a long routine.</p></details>
+    <details><summary>How do I get access?</summary><p>After purchase, look for your access instructions by email. Check your spam or promotions folder if you cannot find them. Contact support if you need help.</p></details>
+    <details><summary>Is this a subscription?</summary><p>No. This offer is $27 USD once, plus applicable tax. Any optional add-ons you select at checkout cost extra.</p></details>
+    <details><summary>Will this guarantee more money?</summary><p>No. This is a personal-development audio practice, not a promise of income. What you do with your goals matters, and individual experiences vary.</p></details>
+    <details><summary>What if I need help with my order?</summary><p>Contact <a class="offer-support" href="https://support.hypnoticmeditations.ai/">Hypnotic Meditations support</a>. Read our <a class="offer-support" href="https://hypnoticmeditations.ai/about/policy.html">refund policy</a> and the terms displayed at checkout before ordering.</p></details>
+  </div>
+  <div class="offer-block">
+    <h2>Your Next Step Is Simple.</h2>
+    <p>Get the audio. Find a quiet place. Give yourself seven minutes tonight.</p>
+    <a class="offer-button checkout" href="https://store.hypnoticmeditations.ai/order">GET THE 7-MINUTE SCRIPT →</a>
+    <p class="offer-terms">$27 USD once · Plus applicable tax · Digital access by email</p>
+  </div>
+</section>
             <div class="trust-badge">
                 <span>🎧 Used by 100,000+ listeners</span>
                 <span>🧠 Subconscious reprogramming</span>
