@@ -21,7 +21,7 @@
   try { var saved = JSON.parse(localStorage.getItem(KEY)); if (saved && Date.now()-saved.at < 15552000000) consent = saved.value; } catch (_) {}
   window['ga-disable-' + ID] = consent !== 'accepted';
   var button = document.createElement('button');
-  button.type='button'; button.textContent='Analytics choices'; button.className='sa-analytics-choice';
+  button.type='button'; button.textContent='Privacy'; button.className='sa-analytics-choice';
   var style = document.createElement('style');
   style.textContent='.sa-analytics-choice{position:fixed;bottom:10px;left:10px;z-index:2147483000;padding:8px 12px;background:white;color:#111;border:1px solid #555;border-radius:6px;font:13px system-ui;cursor:pointer}.sa-analytics-panel{position:fixed;bottom:50px;left:12px;right:12px;z-index:2147483001;max-width:470px;padding:18px;border:1px solid #555;border-radius:10px;background:#fff;color:#111;box-shadow:0 4px 24px #0003;font:15px/1.5 system-ui}.sa-analytics-panel p{margin:0 0 12px}.sa-analytics-panel button,.sa-analytics-panel a{font:inherit}.sa-analytics-panel button{padding:9px 12px;margin-right:8px;border:1px solid #222;background:#fff;color:#111;border-radius:5px;cursor:pointer}';
   document.head.appendChild(style); document.body.appendChild(button);
