@@ -140,32 +140,7 @@
 
     <!-- Delayed checkout: 10 minutes per visitor, persisted across refreshes and /watch. -->
     <script>
-    (function () {
-        var key = 'trythescript-checkout-first-visit-v1';
-        var delayMs = 10 * 60 * 1000;
-        var now = Date.now();
-        var startedAt = now;
-        try {
-            var saved = Number(window.localStorage.getItem(key));
-            if (Number.isFinite(saved) && saved > 0 && saved <= now) {
-                startedAt = saved;
-            } else {
-                window.localStorage.setItem(key, String(startedAt));
-            }
-        } catch (e) {
-            // Still delay checkout during this page view when storage is blocked.
-        }
-        function checkCheckoutDelay() {
-            var remaining = delayMs - (Date.now() - startedAt);
-            if (remaining <= 0) {
-                document.documentElement.classList.add('script-checkout-unlocked');
-                return;
-            }
-            window.setTimeout(checkCheckoutDelay, Math.min(remaining, 30000));
-        }
-        checkCheckoutDelay();
-        document.addEventListener('visibilitychange', checkCheckoutDelay);
-    })();
+(function(){var key='trythescript-checkout-first-visit-v1',now=Date.now(),start=now;try{var saved=Number(localStorage.getItem(key));if(Number.isFinite(saved)&&saved>0&&saved<=now)start=saved;else localStorage.setItem(key,String(start));}catch(e){}function check(){var left=Math.max(0,600000-(Date.now()-start)),seconds=Math.ceil(left/1000);document.querySelectorAll('[data-cta-countdown]').forEach(function(el){el.textContent=Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0');});if(left<=0){document.documentElement.classList.add('script-checkout-unlocked');return;}setTimeout(check,Math.min(left,1000));}check();document.addEventListener('visibilitychange',check);})();
     </script>
 
     <!-- Facebook Pixel Code -->
@@ -192,23 +167,27 @@
 #vslSection .main-headline { font-size: clamp(16px, 4.3vw, 24px) !important; line-height: 1.25 !important; }
 #vslSection .main-headline > span { display: block; white-space: nowrap; }
 </style>
-</head>
-<body>
+<style>
+/* Video-first presentation layout, inspired by the supplied reference. */
+body{background:#fff;color:#1a1f2c}header.presentation-bar,.presentation-bar{background:#0b1424;color:#fff;border:0;padding:10px 16px;text-align:center;font:700 13px/1.5 Arial,sans-serif;letter-spacing:1px}.presentation-bar span{color:#c9d2e0;margin-left:10px;letter-spacing:0}.intro{padding:20px 0 0}.video,.video-wrapper{width:100%;max-width:400px;margin:0 auto;padding:5px;background:linear-gradient(135deg,#0b1424,#283a5d);border-radius:12px;box-shadow:0 24px 50px -18px #0b142473;overflow:visible;min-height:0}.video vturb-smartplayer,.video-wrapper vturb-smartplayer{border-radius:8px;overflow:visible}.sound-hint{max-width:400px;margin:12px auto 0;padding:9px 12px;background:#fffbe6;border:1px dashed #e5c044;border-radius:8px;text-align:center;font-size:14px;line-height:1.4;color:#6a5300}.hero,.editorial .hero,.curiosity .hero{padding:26px 0 10px;background:#fff;color:#0b1424;text-align:center}.hero h1,.editorial h1{font-family:Arial,sans-serif;font-size:clamp(32px,4.4vw,42px);line-height:1.2;letter-spacing:-1px}.hero .eyebrow,.editorial .hero .eyebrow,.curiosity .hero .eyebrow{display:inline-block;background:#ffe9e9;color:#b3322a;border:0;padding:6px 12px;border-radius:999px;font-size:12px;letter-spacing:1.2px;margin:0 0 14px}.hero .lead,.editorial .lead,.curiosity .lead{font-size:19px;color:#46556d;margin:0 auto 20px}.hero mark{background:#ffe246;color:inherit;padding:0 3px}.watch-benefits{list-style:none;padding:0;margin:22px auto;max-width:640px;text-align:left}.watch-benefits li{position:relative;border-bottom:1px solid #eef2f7;padding:12px 0 12px 32px;font-size:18px;line-height:1.5;color:#334155}.watch-benefits li:before{content:'✓';position:absolute;left:0;top:14px;width:22px;height:22px;background:#dcfce7;color:#15803d;border-radius:50%;font-size:14px;font-weight:800;line-height:22px;text-align:center}.timer-note{max-width:640px;margin:20px auto;padding:14px;background:#fff8e1;border:1px solid #f0d77a;border-radius:8px;text-align:center;color:#5b4a00;font-size:16px}.timer-note strong{font-variant-numeric:tabular-nums}.script-checkout-unlocked .timer-note{display:none}.video-label{display:none}footer{font-size:14px}.vsl-container{max-width:720px;margin:0 auto;padding:20px 20px 48px}.vsl-headline{margin:26px auto 0;max-width:640px}.vsl-headline .main-headline,#vslSection .main-headline{font-size:clamp(32px,4.4vw,42px)!important;background:none;color:#0b1424;line-height:1.2!important;letter-spacing:-1px}#vslSection .main-headline>span{white-space:normal}.vsl-subhead{font-size:19px;max-width:620px}.video-caption{border:0;font-size:18px;padding:0;margin:18px auto}.vsl-kicker{display:inline-block;background:#ffe9e9;color:#b3322a;border-radius:999px;padding:6px 12px;font:800 12px/1.5 Arial,sans-serif;letter-spacing:1px;margin-bottom:14px}.simple-foot{text-align:center;font-size:14px;color:#6f7d96;border-top:1px solid #e8ecf2;padding-top:24px;margin-top:30px}.simple-foot a{margin:0 8px}.trust-badge{display:none}@media(max-width:360px){.vsl-container{padding-inline:16px}.hero h1{font-size:32px}}
+@media(max-width:640px){#vslSection .vsl-container{padding-left:20px!important;padding-right:20px!important;margin-top:0!important}}
+</style></head>
+<body><div class="presentation-bar">THE 7-MINUTE SCRIPT <span>· Video presentation</span></div>
     <!-- VSL SECTION: Updated headline, clean video -->
     <div id="vslSection" class="vsl-wrapper fade-in-up">
         <div class="vsl-container">
-            <div class="vsl-headline">
-                <!-- New requested headline -->
-                <h1 class="main-headline"><span>This 7-Minute Script Reprograms</span> <span>Your Subconscious for Wealth 👇</span></h1>
-            </div>
             <!-- Clean video wrapper: no background, no shadow, no border radius -->
             <div class="video-wrapper">
                 <vturb-smartplayer id="ab-6afc5cea23042be373eb26cd" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
-            </div><div class="video-caption">
+            </div><p class="sound-hint">🔊 Turn on the sound and follow along.</p>            <div class="vsl-headline">
+                <p class="vsl-kicker">Sean Ali · The 7-Minute Script</p>
+                <h1 class="main-headline"><span>This 7-Minute Script Reprograms</span> <span>Your Subconscious for Wealth 👇</span></h1>
+            </div>
+<div class="video-caption">
                 ⚡ 7 minutes • Listen before sleep • Rewires the old pattern
             </div>
-            <a class="script-checkout-cta" data-script-delay href="https://pay.hotmart.com/F102533819G?checkoutMode=10">GET THE SCRIPT NOW →</a>
-            <div class="trust-badge">
+<ul class="watch-benefits"><li>A seven-minute guided practice to follow before sleep</li><li>Give your money goals a place in your evening</li><li>Listen and visualize without memorizing a script</li><li>Turn your attention toward your next practical step</li><li>See what’s included before deciding</li></ul><p class="timer-note">Watch the presentation first.<br>Your order button unlocks in <strong data-cta-countdown>10:00</strong>.</p>            <a class="script-checkout-cta" data-script-delay href="https://pay.hotmart.com/F102533819G?checkoutMode=10">GET THE SCRIPT NOW →</a>
+<p class="simple-foot"><a href="https://hypnoticmeditations.ai/about/policy.html">Privacy & policies</a> · <a href="https://support.hypnoticmeditations.ai/">Support</a><br>Personal development. Results vary. No guaranteed financial outcomes.</p>            <div class="trust-badge">
                 <span>🎧 Used by 100,000+ listeners</span>
                 <span>🧠 Subconscious reprogramming</span>
                 <span>🌙 7-night rehearsal plan</span>
