@@ -59,6 +59,7 @@
     layer.push({event:'sa_page_view',page_location:page,page_referrer:ref,page_title:title});
   }
   button.onclick=show; window.__saAnalyticsConsent={show:show};
-  if(consent==='accepted')start();else if(consent!=='declined')show();
+  // Privacy settings open only on request. No choice means analytics stays disabled.
+  if(consent==='accepted')start();
 })();
 
