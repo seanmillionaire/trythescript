@@ -2,7 +2,7 @@
 (function () {
   'use strict';
   var key = 'trythescript-checkout-first-visit-v1';
-  var now = Date.now(), start = now, timer, revealed = false, scrolled = false;
+  var now = Date.now(), start = now, timer, revealed = false, scrolled = false, waitingForLoad = false;
   try {
     var saved = Number(localStorage.getItem(key));
     if (Number.isFinite(saved) && saved > 0 && saved <= now) start = saved;
@@ -10,6 +10,10 @@
   } catch (e) {}
   function moveToOrder() {
     if (scrolled || document.visibilityState === 'hidden') return;
+    if (document.readyState !== 'complete') {
+      if (!waitingForLoad) { waitingForLoad = true; window.addEventListener('load', moveToOrder, {once:true}); }
+      return;
+    }
     var button = document.getElementById('script-order-button');
     if (!button) return;
     scrolled = true;
