@@ -1,4 +1,4 @@
-/* V3 only: a fresh ten-minute arrival timer per page load, not video watch time. */
+/* V3 only: a fresh three-minute arrival timer per page load, not video watch time. */
 (function () {
   'use strict';
   var start = Date.now(), timer, revealed = false, scrolled = false, waitingForLoad = false;
@@ -17,7 +17,7 @@
   }
   function check() {
     clearTimeout(timer);
-    var left = Math.max(0, 600000 - (Date.now() - start));
+    var left = Math.max(0, 180000 - (Date.now() - start));
     var seconds = Math.ceil(left / 1000);
     document.querySelectorAll('[data-cta-countdown]').forEach(function (el) {
       el.textContent = Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0');
