@@ -1,0 +1,20 @@
+/* Visual package stack, scoped below each page's existing offer-reveal gate. */
+.script-offer .script-package-stack{padding-top:48px;margin-top:40px}
+.script-offer .stack-product{max-width:580px;width:100%;margin:24px auto 32px}
+.script-offer .stack-card{background:#fff;border:2px solid #bc2828;border-radius:16px;overflow:hidden;text-align:left;box-shadow:0 12px 30px #4e11110d}
+.script-offer .stack-banner{padding:15px 20px;background:#bc2828;color:#fff;text-align:center;font-size:16px;font-weight:800;letter-spacing:.5px}
+.script-offer .stack-card h3{text-align:center;padding:28px 22px 0;font-size:clamp(26px,4vw,32px)}
+.script-offer .stack-items{list-style:none;margin:24px 22px;padding:0}
+.script-offer .stack-items li{display:grid;grid-template-columns:36px 1fr;column-gap:12px;row-gap:10px;padding:22px 0;border-top:1px solid #e8e1df;align-items:start}
+.script-offer .stack-items strong{display:block;font-size:21px;line-height:1.35}
+.script-offer .stack-items small{display:block;font-size:18px;line-height:1.55;color:#536176;margin-top:6px}
+.script-offer .stack-number{border-radius:50%;width:36px;height:36px;display:grid;place-items:center;background:#fff0ed;color:#a92323;font-weight:800;font-size:16px}
+.script-offer .stack-included{grid-column:2;justify-self:start;color:#16723d;background:#eaf8ed;padding:4px 12px;border-radius:5px;font-size:16px}
+.script-offer .stack-delivery{display:flex;flex-wrap:wrap;gap:12px 20px;justify-content:center;padding:22px;background:#faf7f3;font-size:17px;border-block:1px solid #eee4db}
+.script-offer .stack-total{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:28px 24px;background:#fff5d8;font-weight:800;line-height:1.4;font-size:18px}
+.script-offer .stack-total>strong{font-size:48px;color:#ad2525;line-height:1.1;white-space:nowrap}
+.script-offer .stack-total small{display:block;font-size:16px;font-weight:400;margin-top:5px}
+.script-offer .stack-total>strong small{display:inline;font-size:17px;margin-left:5px}
+.script-offer .stack-card .offer-button{margin:26px 22px 18px;max-width:none;text-align:center}
+.script-offer .stack-card .offer-terms{padding:0 22px;text-align:center;font-size:16px}
+@media(max-width:360px){.script-offer .stack-total{padding:22px 16px;gap:10px;font-size:16px}.script-offer .stack-total>strong{font-size:40px}.script-offer .stack-items{margin-inline:16px}.script-offer .stack-card .offer-button{margin-inline:16px}}
