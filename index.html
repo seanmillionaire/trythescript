@@ -37,18 +37,18 @@
     .nav-links .quiet:hover{text-decoration:underline}
     .nav-cta{padding:12px 20px;border-radius:100px;background:#1e2634;color:#fff;text-decoration:none}
     .nav-cta:hover{background:#303c50}
-    .hero{padding:80px 0 86px;position:relative;overflow:hidden}
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);align-items:center;gap:66px}
+    .hero{padding:42px 0 46px;position:relative;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);align-items:center;gap:42px}
     .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 15px;border-radius:40px;background:#fff2e8;border:1px solid #f9dbc3;color:#9a4219;font-size:12px;font-weight:800;letter-spacing:.085em;text-transform:uppercase}
     .eyebrow .dot{height:7px;width:7px;border-radius:50%;background:var(--orange)}
-    h1{font-size:clamp(43px,4.75vw,68px);margin:25px 0 24px;max-width:700px;letter-spacing:-.065em}
+    h1{font-size:clamp(42px,4.45vw,62px);margin:17px 0 13px;max-width:700px;letter-spacing:-.065em}
     h1 span{color:#dd6126}
-    .lead{font-size:19px;color:#4c5666;max-width:585px;line-height:1.72;margin-bottom:28px}
+    .lead{font-size:19px;color:#4c5666;max-width:585px;line-height:1.6;margin-bottom:18px}
     .primary{display:inline-flex;align-items:center;justify-content:center;gap:13px;text-decoration:none;background:linear-gradient(135deg,#f17732,#e4551d);box-shadow:0 12px 28px #d75b252c;border-radius:14px;color:white;font-size:16px;font-weight:800;padding:20px 27px;min-height:62px;transition:transform .15s ease,box-shadow .15s ease;text-align:center}
     .primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px #d75b2540}
     .primary span{font-size:22px;font-weight:600}
     .micro{font-size:13px;color:#747b86;margin:13px 0 0}
-    .hero-visual{position:relative;padding:26px;min-height:520px;display:grid;place-items:center}
+    .hero-visual{position:relative;padding:18px;min-height:424px;display:grid;place-items:center}
     .aura{position:absolute;inset:4% -2%;border-radius:50%;background:radial-gradient(circle at 52% 50%,#f8ca9e 0%,#ffe9d4 35%,#fbfaf700 72%);filter:blur(4px)}
     .orbit{position:absolute;inset:15% 6%;border:1px solid #edbd9a;border-radius:50%;transform:rotate(-21deg)}
     .orbit.two{inset:22% -5%;transform:rotate(25deg);opacity:.55}
@@ -68,6 +68,10 @@
     .track b{display:block;width:40%;height:100%;background:#f09b62;border-radius:8px}
     .float-note{position:absolute;z-index:2;right:-5px;bottom:47px;background:white;color:#293143;box-shadow:0 13px 35px #1b24351c;padding:15px 17px;border-radius:15px;font-size:12px;font-weight:800;transform:rotate(4deg)}
     .float-note span{color:#e66a31}
+    .hero .player{padding:23px 24px}
+    .hero .art{height:158px;margin:18px 0 15px}
+    .hero .player p{margin-bottom:14px}
+    .hero .sound{height:29px;margin-bottom:11px}
     .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:white;padding:21px 0}
     .strip-inner{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;text-align:center;color:#555f70;font-size:13px;font-weight:800}
     .strip-inner span{display:flex;align-items:center;gap:9px}
@@ -108,11 +112,11 @@
     .footer-inner a:hover{text-decoration:underline}
     @media(max-width:880px){
       .nav-links .quiet{display:none}
-      .hero{padding:54px 0 62px}
+      .hero{padding:31px 0 30px}
       .hero-grid{grid-template-columns:1fr;gap:12px}
       .hero-copy{text-align:center}
       .hero-copy h1,.hero-copy .lead{margin-left:auto;margin-right:auto}
-      .hero-visual{min-height:445px;max-width:500px;margin:0 auto;width:100%}
+      .hero-visual{min-height:374px;max-width:500px;margin:0 auto;width:100%}
       .steps{grid-template-columns:1fr;max-width:640px;margin:auto}
       .step{min-height:0}
       .explain-grid{grid-template-columns:1fr;gap:25px}
@@ -123,13 +127,13 @@
       .brand{font-size:17px;gap:8px}
       .brand-symbol{width:33px;height:33px;border-radius:10px;font-size:18px}
       .nav-cta{padding:10px 13px;font-size:12px}
-      .hero{padding:42px 0 49px}
+      .hero{padding:21px 0 23px}
       h1{font-size:clamp(37px,9.3vw,52px);margin:21px 0 18px}
       .lead{font-size:16px;line-height:1.7}
       .primary{display:flex;width:100%;font-size:14px;padding:16px 13px;min-height:57px}
-      .hero-visual{min-height:380px;padding:10px}
-      .player{width:82%;padding:23px 20px;border-radius:23px}
-      .art{height:143px;margin:18px 0}
+      .hero-visual{min-height:306px;padding:8px}
+      .hero .player{width:82%;padding:17px 18px;border-radius:23px}
+      .hero .art{height:118px;margin:12px 0}
       .player h3{font-size:19px}
       .float-note{right:0;bottom:16px;font-size:10px}
       .section{padding:66px 0}
@@ -193,7 +197,7 @@
         <div class="hero-copy">
           <div class="eyebrow"><span class="dot" aria-hidden="true"></span>A simple 7-minute script for your money mindset</div>
           <h1 id="hero-title">Visualize Your Dream Life <span>In Seven Minutes Before Bed</span></h1>
-          <p class="lead">You already spend your day on client work, campaigns or content. But the income goal that would let you take that family trip or set more money aside keeps turning up on next year’s list. Take seven minutes tonight to visualize it and decide what you’ll do next.</p>
+          <p class="lead">Already working online? Picture the income goal that keeps carrying over and what it would mean for your family. Pick one move for tomorrow.</p>
           <a class="primary watch-link" href="/watch">WATCH SEAN EXPLAIN THE SCRIPT <span aria-hidden="true">→</span></a>
           <p class="micro">Watch the free video · Learn the simple 7-minute practice</p>
         </div>
